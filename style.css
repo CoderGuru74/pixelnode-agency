@@ -1,5 +1,5 @@
-/* --- 1. FONTS & ROOT DEFAULTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@600;800;900&display=swap');
+/* --- 1. FONTS & RESET --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@800;900&display=swap');
 
 body, html {
     margin: 0;
@@ -7,25 +7,21 @@ body, html {
     background: #020202;
     color: white;
     font-family: 'Inter', sans-serif;
-    scroll-behavior: smooth;
     overflow-x: hidden;
 }
 
-.outfit-font { 
-    font-family: 'Outfit', sans-serif; 
-}
+.outfit-font { font-family: 'Outfit', sans-serif; }
 
-/* --- 2. THE 3D ENGINE CONTAINER (HOME) --- */
+/* --- 2. 3D BACKGROUND ENGINE --- */
 #canvas-container {
     position: fixed;
     top: 0;
     right: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Sits behind text content */
+    z-index: 1;
 }
 
-/* Vignette mask to make text readable over the 3D element */
 #canvas-container::after {
     content: "";
     position: absolute;
@@ -37,125 +33,60 @@ body, html {
     pointer-events: none;
 }
 
-/* --- 3. SUBPAGE GRADIENTS (FOR PAGES WITHOUT 3D) --- */
+/* --- 3. NAVIGATION GLASS --- */
+.nav-glass {
+    background: rgba(2, 2, 2, 0.7);
+    backdrop-filter: blur(25px) saturate(180%);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+}
+
+/* --- 4. STUNNING TEXT EFFECTS --- */
+.shine-text {
+    background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #6d28d9 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineEffect 5s linear infinite;
+}
+
+@keyframes shineEffect {
+    to { background-position: 200% center; }
+}
+
+/* Slogan Entrance Animation */
+.animate-fade-in {
+    animation: slideRight 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+@keyframes slideRight {
+    0% { opacity: 0; transform: translateX(-50px); filter: blur(10px); }
+    100% { opacity: 1; transform: translateX(0); filter: blur(0); }
+}
+
+/* Ambient Pulse Background */
+.animate-pulse-slow {
+    animation: pulseGlow 8s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* --- 5. CUSTOM UI COMPONENTS --- */
+::selection {
+    background: #a855f7;
+    color: white;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #020202; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #a855f7; }
+
+/* Subpage Subtle Glows */
 .subpage-bg {
     background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08), transparent 50%),
                 radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.05), transparent 50%);
     background-attachment: fixed;
-}
-
-/* --- 4. NAVIGATION & GLASSMORPHISM --- */
-.nav-glass {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-/* --- 5. TEXT GRADIENTS & COLORS --- */
-.text-purple-500 {
-    background: linear-gradient(to bottom, #ffffff 10%, #a855f7 90%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.2));
-}
-
-.gradient-text {
-    background: linear-gradient(to right, #ffffff, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-/* --- 6. INFINITE LOGO CAROUSEL --- */
-@keyframes slide {
-    from { transform: translateX(0); }
-    to { transform: translateX(-100%); }
-}
-
-.logos-slide {
-    animation: 25s slide infinite linear;
-}
-
-.logos-container::before, .logos-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 200px;
-    height: 100%;
-    z-index: 2;
-}
-
-.logos-container::before { left: 0; background: linear-gradient(to right, #020202, transparent); }
-.logos-container::after { right: 0; background: linear-gradient(to left, #020202, transparent); }
-
-/* --- 7. BENTO GRID & CARD INTERACTION --- */
-.grid div {
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
-}
-
-.grid div:hover {
-    transform: translateY(-8px);
-}
-
-/* --- 8. SWIPER STACKED TESTIMONIALS --- */
-.testimonial-swiper {
-    padding: 20px 0;
-}
-
-.swiper-slide {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: all 0.3s ease;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-    background: #0a0a0a; /* Ensure the cards look solid */
-}
-
-/* --- 9. GLOBAL ANIMATIONS --- */
-body {
-    animation: fadeInPage 1s ease-out;
-}
-
-@keyframes fadeInPage {
-    from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Slogan Slide-In Animation */
-.animate-fade-in {
-    animation: slideInSlogan 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes slideInSlogan {
-    from {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-/* --- 10. CUSTOM SCROLLBAR --- */
-::-webkit-scrollbar {
-    width: 6px;
-}
-::-webkit-scrollbar-track {
-    background: #020202;
-}
-::-webkit-scrollbar-thumb {
-    background: #222;
-    border-radius: 10px;
-}
-::-webkit-scrollbar-thumb:hover {
-    background: #a855f7;
-}
-
-/* Terms and Conditions Small Text */
-.terms-text {
-    font-size: 9px;
-    text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-weight: 800;
-    color: #333;
 }
