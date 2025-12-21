@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | PixelNode</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="canvas-container"></div>
+
+    <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center nav-glass">
+        <div class="text-2xl font-black outfit-font tracking-tighter uppercase">
+            <a href="index.html">Pixel<span class="text-purple-500">node</span></a>
+        </div>
+        <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest">
+            <a href="services.html" class="hover:text-purple-500 transition">Services</a>
+            <a href="about.html" class="text-purple-500">About Us</a>
+            <a href="pricing.html" class="hover:text-purple-500 transition">Pricing</a>
+            <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition">Contact</a>
+        </div>
+    </nav>
+
+    <main class="relative z-10 pt-40 px-10 pb-20 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-6xl font-black outfit-font mb-8">We are <span class="text-purple-500">PixelNode</span></h1>
+            <p class="text-gray-400 text-xl leading-relaxed mb-12">
+                Founded at the intersection of creativity and automation, PixelNode is a digital production house dedicated to helping businesses scale through cutting-edge technology.
+            </p>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="text-4xl font-bold outfit-font text-white">50+</div>
+                    <div class="text-gray-500 text-sm uppercase">Projects</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold outfit-font text-white">12</div>
+                    <div class="text-gray-500 text-sm uppercase">AI Agents</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold outfit-font text-white">99%</div>
+                    <div class="text-gray-500 text-sm uppercase">Uptime</div>
+                </div>
+                <div>
+                    <div class="text-4xl font-bold outfit-font text-white">24/7</div>
+                    <div class="text-gray-500 text-sm uppercase">Support</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
