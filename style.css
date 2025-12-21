@@ -1,6 +1,6 @@
-/* --- 1. FONTS & RESET --- */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@800;900&display=swap');
 
+/* --- GLOBAL SETTINGS --- */
 body, html {
     margin: 0;
     padding: 0;
@@ -12,35 +12,23 @@ body, html {
 
 .outfit-font { font-family: 'Outfit', sans-serif; }
 
-/* --- 2. 3D BACKGROUND ENGINE --- */
 #canvas-container {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
-}
-
-#canvas-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 75% 50%, transparent 10%, #020202 90%);
+    z-index: 0;
     pointer-events: none;
 }
 
-/* --- 3. NAVIGATION GLASS --- */
+/* --- NAVIGATION --- */
 .nav-glass {
-    background: rgba(2, 2, 2, 0.7);
-    backdrop-filter: blur(25px) saturate(180%);
-    border-bottom: 1px solid rgba(168, 85, 247, 0.2);
+    background: rgba(2, 2, 2, 0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(168, 85, 247, 0.15);
 }
 
-/* --- 4. STUNNING TEXT EFFECTS --- */
 .shine-text {
     background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #6d28d9 100%);
     background-size: 200% auto;
@@ -53,40 +41,49 @@ body, html {
     to { background-position: 200% center; }
 }
 
-/* Slogan Entrance Animation */
-.animate-fade-in {
-    animation: slideRight 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+/* --- MOBILE RESPONSIVENESS (CORRECTED) --- */
+@media (max-width: 768px) {
+    /* MASSIVE HERO TEXT ON MOBILE */
+    h1 {
+        font-size: 4.8rem !important; 
+        line-height: 0.9 !important;
+        letter-spacing: -0.05em !important;
+        margin-bottom: 30px !important;
+    }
+
+    /* FIX PADDING FOR CONTENT */
+    main {
+        padding-top: 140px !important;
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+
+    /* ENSURE MOBILE MENU IS VISIBLE WHEN TRIGGERED */
+    #mobile-menu:not(.hidden) {
+        display: flex !important;
+    }
+
+    /* REDUCE BACKGROUND OPACITY FOR READABILITY */
+    #canvas-container {
+        opacity: 0.4;
+    }
 }
 
-@keyframes slideRight {
-    0% { opacity: 0; transform: translateX(-50px); filter: blur(10px); }
-    100% { opacity: 1; transform: translateX(0); filter: blur(0); }
-}
-
-/* Ambient Pulse Background */
+/* --- ANIMATIONS --- */
 .animate-pulse-slow {
     animation: pulseGlow 8s ease-in-out infinite;
 }
 
 @keyframes pulseGlow {
     0%, 100% { opacity: 0.2; transform: scale(1); }
-    50% { opacity: 0.4; transform: scale(1.2); }
+    50% { opacity: 0.4; transform: scale(1.1); }
 }
 
-/* --- 5. CUSTOM UI COMPONENTS --- */
-::selection {
-    background: #a855f7;
-    color: white;
+.animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #020202; }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 10px; }
-::-webkit-scrollbar-thumb:hover { background: #a855f7; }
-
-/* Subpage Subtle Glows */
-.subpage-bg {
-    background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08), transparent 50%),
-                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.05), transparent 50%);
-    background-attachment: fixed;
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
