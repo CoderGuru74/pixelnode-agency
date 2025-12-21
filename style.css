@@ -1,3 +1,4 @@
+/* --- CORE STYLES --- */
 body, html {
     margin: 0;
     padding: 0;
@@ -5,18 +6,19 @@ body, html {
     color: white;
     font-family: 'Inter', sans-serif;
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 .outfit-font { font-family: 'Outfit', sans-serif; }
 
-/* 3D Background Container */
+/* Home 3D Background Engine */
 #canvas-container {
     position: fixed;
     top: 0;
     right: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1; /* Keep visible in background */
+    z-index: 1;
 }
 
 #canvas-container::after {
@@ -26,18 +28,82 @@ body, html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 70% 50%, transparent 20%, #020202 90%);
+    background: radial-gradient(circle at 75% 50%, transparent 20%, #020202 90%);
     pointer-events: none;
 }
 
-.gradient-text {
-    background: linear-gradient(to bottom, #fff, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+/* Subpage Glow Effect */
+.subpage-bg {
+    background: radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.08), transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(124, 58, 237, 0.05), transparent 50%);
+    background-attachment: fixed;
 }
 
+/* Navbar Glassmorphism */
 .nav-glass {
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* TEXT GRADIENTS */
+.text-purple-500 {
+    background: linear-gradient(to bottom, #ffffff 10%, #a855f7 90%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.2));
+}
+
+/* INFINITE LOGO SLIDER */
+@keyframes slide {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+}
+
+.logos-slide {
+    animation: 25s slide infinite linear;
+}
+
+.logos-container::before, .logos-container::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 200px;
+    height: 100%;
+    z-index: 2;
+}
+
+.logos-container::before { left: 0; background: linear-gradient(to right, #020202, transparent); }
+.logos-container::after { right: 0; background: linear-gradient(to left, #020202, transparent); }
+
+/* BENTO GRID HOVER */
+.grid div {
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease;
+}
+
+.grid div:hover {
+    transform: translateY(-8px);
+}
+
+/* STACKED TESTIMONIALS */
+.testimonial-swiper {
+    padding: 20px 0;
+}
+
+.swiper-slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
+
+/* GLOBAL FADE IN */
+body {
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
 }
