@@ -2,18 +2,17 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>About Us | PixelNode</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | PixelNode Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div id="canvas-container"></div>
+<body class="bg-[#020202] text-white subpage-bg">
 
     <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center nav-glass">
         <div class="text-2xl font-black outfit-font tracking-tighter uppercase">
-            <a href="index.html">Pixel<span class="text-purple-500">node</span></a>
+            <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
         </div>
         <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest">
             <a href="services.html" class="hover:text-purple-500 transition">Services</a>
@@ -23,33 +22,59 @@
         </div>
     </nav>
 
-    <main class="relative z-10 pt-40 px-10 pb-20 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-6xl font-black outfit-font mb-8">We are <span class="text-purple-500">PixelNode</span></h1>
-            <p class="text-gray-400 text-xl leading-relaxed mb-12">
-                Founded at the intersection of creativity and automation, PixelNode is a digital production house dedicated to helping businesses scale through cutting-edge technology.
+    <main class="pt-40 px-6 md:px-20">
+        <div class="max-w-4xl mb-32">
+            <h1 class="text-6xl md:text-8xl font-black outfit-font leading-none tracking-tighter mb-8 uppercase">
+                WE ARE <br><span class="text-purple-500">PIXELNODE</span>
+            </h1>
+            <p class="text-gray-400 text-xl font-light leading-relaxed">
+                Born at the intersection of design and deep-tech. We don't just build products; we build digital ecosystems that breathe and scale.
             </p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-4xl font-bold outfit-font text-white">50+</div>
-                    <div class="text-gray-500 text-sm uppercase">Projects</div>
+        </div>
+
+        <section class="mb-32">
+            <h2 class="text-3xl font-bold outfit-font mb-12 uppercase tracking-widest">Meet the <span class="text-purple-500">Leadership</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="group p-8 rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all">
+                    <div class="w-full aspect-square bg-gradient-to-br from-purple-900/40 to-black rounded-[30px] mb-8 flex items-center justify-center overflow-hidden">
+                        <span class="text-white/10 font-black text-9xl outfit-font group-hover:scale-110 transition-transform duration-500">SR</span>
+                    </div>
+                    <h3 class="text-3xl font-bold outfit-font mb-2">SHUBHAM RAJ</h3>
+                    <p class="text-purple-500 font-bold text-sm tracking-[0.2em] uppercase">Founder & CEO</p>
                 </div>
-                <div>
-                    <div class="text-4xl font-bold outfit-font text-white">12</div>
-                    <div class="text-gray-500 text-sm uppercase">AI Agents</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold outfit-font text-white">99%</div>
-                    <div class="text-gray-500 text-sm uppercase">Uptime</div>
-                </div>
-                <div>
-                    <div class="text-4xl font-bold outfit-font text-white">24/7</div>
-                    <div class="text-gray-500 text-sm uppercase">Support</div>
+
+                <div class="group p-8 rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all">
+                    <div class="w-full aspect-square bg-gradient-to-br from-blue-900/40 to-black rounded-[30px] mb-8 flex items-center justify-center overflow-hidden">
+                        <span class="text-white/10 font-black text-9xl outfit-font group-hover:scale-110 transition-transform duration-500">PS</span>
+                    </div>
+                    <h3 class="text-3xl font-bold outfit-font mb-2">PRATAP KUMAR SINGH</h3>
+                    <p class="text-purple-500 font-bold text-sm tracking-[0.2em] uppercase">Head of Graphic Design</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <section class="pb-32">
+            <div class="p-12 rounded-[50px] bg-purple-600/5 border border-purple-500/20 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-10">
+                <div class="max-w-xl text-center md:text-left">
+                    <h2 class="text-3xl font-bold outfit-font mb-4">The Engine Room</h2>
+                    <p class="text-gray-400 font-light">
+                        Supported by a global network of specialized developers, SEO experts, and AI engineers who prefer to let their work speak louder than their names. Our decentralized team ensures 24/7 delivery and security.
+                    </p>
+                </div>
+                <div class="flex -space-x-6">
+                    <div class="w-20 h-20 rounded-full border-4 border-[#020202] bg-gray-800 flex items-center justify-center font-bold text-gray-500 text-xs">DEV</div>
+                    <div class="w-20 h-20 rounded-full border-4 border-[#020202] bg-gray-700 flex items-center justify-center font-bold text-gray-400 text-xs">ENG</div>
+                    <div class="w-20 h-20 rounded-full border-4 border-[#020202] bg-gray-600 flex items-center justify-center font-bold text-gray-300 text-xs">SEO</div>
+                    <div class="w-20 h-20 rounded-full border-4 border-[#020202] bg-purple-600 flex items-center justify-center font-bold text-white text-xs">+15</div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <script src="script.js"></script>
+    <footer class="py-20 text-center border-t border-white/5">
+        <p class="text-gray-600 text-[10px] uppercase tracking-widest font-bold">© 2025 Pixelnode Agency. All Nodes Reserved.</p>
+    </footer>
+
 </body>
 </html>
