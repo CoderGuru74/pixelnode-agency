@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="icon" type="image/png" href="p-modified.png">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services | PixelNode Capabilities</title>
+    
+    <link rel="icon" type="image/png" href="p-modified.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -12,94 +14,116 @@
 </head>
 <body class="bg-[#020202] text-white subpage-bg">
 
-    <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center nav-glass">
-        <div class="text-2xl font-black outfit-font tracking-tighter uppercase">
-            <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
+    <nav class="fixed w-full z-50 py-4 md:py-6 px-6 md:px-10 flex justify-between items-center nav-glass">
+        <div class="flex items-center gap-3">
+            <img src="p-modified.png" alt="PixelNode Logo" class="h-8 md:h-10 w-auto">
+            <div class="text-xl md:text-2xl font-black outfit-font tracking-tighter uppercase">
+                <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
+            </div>
         </div>
+
         <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest">
             <a href="services.html" class="text-purple-500">Services</a>
             <a href="about.html" class="hover:text-purple-500 transition">About Us</a>
             <a href="pricing.html" class="hover:text-purple-500 transition">Pricing</a>
             <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition">Contact</a>
         </div>
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-[60] flex flex-col items-center justify-center gap-8 hidden">
+            <button id="close-btn" class="absolute top-8 right-8 text-white p-2">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="services.html" class="text-3xl font-black outfit-font text-purple-500 uppercase">Services</a>
+            <a href="about.html" class="text-3xl font-black outfit-font uppercase">About Us</a>
+            <a href="pricing.html" class="text-3xl font-black outfit-font uppercase">Pricing</a>
+            <a href="contact.html" class="text-3xl font-black outfit-font uppercase">Contact</a>
+        </div>
     </nav>
 
-    <main class="pt-40 px-6 md:px-20">
-        <div class="max-w-4xl mb-20">
-            <h1 class="text-6xl md:text-8xl font-black outfit-font leading-none tracking-tighter mb-6 uppercase">
+    <main class="pt-32 md:pt-40 px-6 md:px-20">
+        <div class="max-w-4xl mb-12 md:mb-20">
+            <h1 class="text-5xl md:text-8xl font-black outfit-font leading-tight tracking-tighter mb-6 uppercase">
                 OUR <span class="text-purple-500">CAPABILITIES</span>
             </h1>
-            <p class="text-gray-400 text-xl font-light leading-relaxed">We combine technical precision with creative strategy to build nodes of digital excellence.</p>
+            <p class="text-gray-400 text-lg md:text-xl font-light leading-relaxed">We combine technical precision with creative strategy to build nodes of digital excellence.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-32">
-            <div class="md:col-span-2 p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all">
-                <div class="flex justify-between items-start mb-20">
-                    <h3 class="text-4xl font-bold outfit-font">App & Software<br>Development</h3>
-                    <span class="text-purple-500 text-5xl opacity-20">01</span>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24 md:mb-32">
+            <div class="md:col-span-2 p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/50 transition-all">
+                <div class="flex justify-between items-start mb-12 md:mb-20">
+                    <h3 class="text-3xl md:text-4xl font-bold outfit-font">App & Software<br>Development</h3>
+                    <span class="text-purple-500 text-4xl md:text-5xl opacity-20">01</span>
                 </div>
                 <p class="text-gray-400 max-w-md font-light leading-relaxed">Custom iOS/Android apps and complex SaaS platforms built with Next.js and Flutter for maximum scale.</p>
             </div>
 
-            <div class="p-10 rounded-[40px] bg-purple-600 border border-purple-400 text-white flex flex-col justify-between">
+            <div class="p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-purple-600 border border-purple-400 text-white flex flex-col justify-between min-h-[250px]">
                 <span class="font-bold tracking-widest uppercase text-[10px]">Automation</span>
                 <div>
                     <h3 class="text-3xl font-bold outfit-font mb-4 leading-tight">AI Calling<br>Agents</h3>
-                    <p class="text-white/80 text-sm font-light">24/7 autonomous voice agents for sales and support that scale with your business.</p>
+                    <p class="text-white/80 text-sm font-light">24/7 autonomous voice agents for sales and support.</p>
                 </div>
             </div>
 
-            <div class="p-10 rounded-[40px] bg-white/5 border border-white/10">
+            <div class="p-8 md:p-10 rounded-[30px] bg-white/5 border border-white/10">
                 <h3 class="text-2xl font-bold outfit-font mb-4">Websites</h3>
                 <p class="text-gray-400 text-sm font-light">Any type of website—E-commerce, Portfolios, or Corporate. Optimized for speed and SEO.</p>
             </div>
 
-            <div class="p-10 rounded-[40px] bg-white/5 border border-white/10">
+            <div class="p-8 md:p-10 rounded-[30px] bg-white/5 border border-white/10">
                 <h3 class="text-2xl font-bold outfit-font mb-4">SEO & Digital Marketing</h3>
                 <p class="text-gray-400 text-sm font-light">SEO-friendly architectures and data-driven marketing funnels to capture your audience.</p>
             </div>
 
-            <div class="p-10 rounded-[40px] bg-white/5 border border-white/10">
+            <div class="p-8 md:p-10 rounded-[30px] bg-white/5 border border-white/10">
                 <h3 class="text-2xl font-bold outfit-font mb-4">Video Production</h3>
                 <p class="text-gray-400 text-sm font-light">Viral social media content and premium brand commercials that drive high engagement.</p>
             </div>
         </div>
 
-        <div class="mb-40">
+        <div class="mb-32">
             <p class="text-center text-gray-500 text-[10px] uppercase tracking-[0.3em] mb-12 font-bold">Trusted by global innovators</p>
             <div class="logos-container overflow-hidden relative">
-                <div class="logos-slide flex items-center gap-24 whitespace-nowrap">
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">NODE_SYS</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">QUARK_AI</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">PIXEL_FLOW</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">VOX_AGENTS</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">NODE_SYS</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">QUARK_AI</span>
-                    <span class="text-3xl font-bold opacity-30 outfit-font tracking-tighter">PIXEL_FLOW</span>
+                <div class="logos-slide flex items-center gap-16 md:gap-24 whitespace-nowrap">
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">NODE_SYS</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">QUARK_AI</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">PIXEL_FLOW</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">VOX_AGENTS</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">NODE_SYS</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">QUARK_AI</span>
+                    <span class="text-2xl md:text-3xl font-bold opacity-30 outfit-font tracking-tighter">PIXEL_FLOW</span>
                 </div>
             </div>
         </div>
 
-        <section class="pb-40">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
+        <section class="pb-24 md:pb-40">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
                 <div>
-                    <h2 class="text-5xl font-bold outfit-font mb-6 leading-tight uppercase">What our <br><span class="text-purple-500">Clients</span> say</h2>
+                    <h2 class="text-4xl md:text-5xl font-bold outfit-font mb-6 leading-tight uppercase">What our <br><span class="text-purple-500">Clients</span> say</h2>
                     <p class="text-gray-400 font-light text-lg leading-relaxed">Experience the power of automation through the eyes of our partners who have scaled with us.</p>
                 </div>
                 
                 <div class="swiper testimonial-swiper w-full max-w-[420px]">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide p-10 rounded-[40px] border border-white/10 bg-[#0a0a0a] flex flex-col justify-between h-[380px]">
-                            <p class="text-xl italic font-light leading-relaxed mb-8">"PixelNode built our AI calling agent in record time. It now handles 40% of our inbound leads effortlessly."</p>
+                        <div class="swiper-slide p-8 md:p-10 rounded-[30px] md:rounded-[40px] border border-white/10 bg-[#0a0a0a] flex flex-col justify-between h-[340px] md:h-[380px]">
+                            <p class="text-lg md:text-xl italic font-light leading-relaxed mb-8">"PixelNode built our AI calling agent in record time. It now handles 40% of our inbound leads effortlessly."</p>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center font-bold">MS</div>
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-purple-600 rounded-full flex items-center justify-center font-bold">MS</div>
                                 <div><h4 class="font-bold outfit-font text-sm">Marcus Sterling</h4><p class="text-gray-500 text-[10px] uppercase tracking-widest">CEO, Sterling SaaS</p></div>
                             </div>
                         </div>
-                        <div class="swiper-slide p-10 rounded-[40px] border border-white/10 bg-[#111] flex flex-col justify-between h-[380px]">
-                            <p class="text-xl italic font-light leading-relaxed mb-8">"Their SEO and Web Dev expertise took our site from page 10 to page 1. Absolutely incredible results."</p>
+                        <div class="swiper-slide p-8 md:p-10 rounded-[30px] md:rounded-[40px] border border-white/10 bg-[#111] flex flex-col justify-between h-[340px] md:h-[380px]">
+                            <p class="text-lg md:text-xl italic font-light leading-relaxed mb-8">"Their SEO and Web Dev expertise took our site from page 10 to page 1. Absolutely incredible results."</p>
                             <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center font-bold">AL</div>
+                                <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-600 rounded-full flex items-center justify-center font-bold">AL</div>
                                 <div><h4 class="font-bold outfit-font text-sm">Aria Luo</h4><p class="text-gray-500 text-[10px] uppercase tracking-widest">Founder, Nexus Labs</p></div>
                             </div>
                         </div>
@@ -109,13 +133,13 @@
         </section>
     </main>
 
-    <section class="py-32 text-center border-t border-white/5 relative overflow-hidden">
+    <section class="py-20 md:py-32 text-center border-t border-white/5 relative overflow-hidden">
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-purple-600/10 blur-[120px] -z-10"></div>
         <div class="max-w-4xl mx-auto px-6">
-            <h2 class="text-5xl md:text-7xl font-black outfit-font mb-12 tracking-tighter uppercase leading-tight">
+            <h2 class="text-4xl md:text-7xl font-black outfit-font mb-8 md:mb-12 tracking-tighter uppercase leading-tight">
                 Have an idea? <br>Let’s <span class="text-purple-500">node</span> it.
             </h2>
-            <a href="contact.html" class="inline-block bg-white text-black px-12 py-5 rounded-2xl font-bold text-lg hover:bg-purple-600 hover:text-white transition-all duration-500 active:scale-95 shadow-2xl shadow-purple-500/10">
+            <a href="contact.html" class="inline-block bg-white text-black px-10 md:px-12 py-4 md:py-5 rounded-2xl font-bold text-lg hover:bg-purple-600 hover:text-white transition-all duration-500 active:scale-95 shadow-2xl shadow-purple-500/10">
                 Start a Project
             </a>
         </div>

@@ -1,150 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-    <link rel="icon" type="image/png" href="p-modified.png">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | PixelNode Professional Agency</title>
+    
+    <link rel="icon" type="image/png" href="p-modified.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-[#020202] text-white subpage-bg">
 
-    <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center nav-glass">
-        <div class="text-2xl font-black outfit-font tracking-tighter uppercase">
-            <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
+    <nav class="fixed w-full z-50 py-4 md:py-6 px-6 md:px-10 flex justify-between items-center nav-glass">
+        <div class="flex items-center gap-3">
+            <img src="p-modified.png" alt="PixelNode Logo" class="h-8 md:h-10 w-auto">
+            <div class="text-xl md:text-2xl font-black outfit-font tracking-tighter uppercase">
+                <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
+            </div>
         </div>
+
         <div class="hidden md:flex gap-10 text-[11px] font-bold uppercase tracking-widest">
             <a href="services.html" class="hover:text-purple-500 transition">Services</a>
             <a href="about.html" class="hover:text-purple-500 transition">About Us</a>
             <a href="pricing.html" class="text-purple-500">Pricing</a>
             <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition">Contact</a>
         </div>
+
+        <button id="menu-btn" class="md:hidden text-white focus:outline-none p-2">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
+
+        <div id="mobile-menu" class="fixed inset-0 bg-black/95 z-[60] flex flex-col items-center justify-center gap-8 hidden">
+            <button id="close-btn" class="absolute top-8 right-8 text-white p-2">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+            <a href="services.html" class="text-3xl font-black outfit-font uppercase">Services</a>
+            <a href="about.html" class="text-3xl font-black outfit-font uppercase">About Us</a>
+            <a href="pricing.html" class="text-3xl font-black outfit-font text-purple-500 uppercase">Pricing</a>
+            <a href="contact.html" class="text-3xl font-black outfit-font uppercase">Contact</a>
+        </div>
     </nav>
 
-    <main class="pt-40 px-6 md:px-20">
-        <div class="max-w-4xl mb-24">
-            <h1 class="text-6xl md:text-8xl font-black outfit-font leading-[0.9] tracking-tighter mb-8 uppercase">
+    <main class="pt-32 md:pt-40 px-6 md:px-20">
+        <div class="max-w-4xl mb-16 md:mb-24">
+            <h1 class="text-5xl md:text-8xl font-black outfit-font leading-tight tracking-tighter mb-8 uppercase">
                 Transparent <br><span class="text-purple-500">Investment.</span>
             </h1>
-            <p class="text-gray-400 text-xl font-light leading-relaxed max-w-2xl">
+            <p class="text-gray-400 text-lg md:text-xl font-light leading-relaxed max-w-2xl">
                 We don't just sell services; we deliver high-performance nodes for your digital ecosystem. Choose your entry point below.
             </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-32 items-stretch">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-24 md:mb-32 items-stretch">
             
-            <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
+            <div class="group p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
                         <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
                     </div>
-                    <h3 class="text-3xl font-bold outfit-font mb-2">Standard Node</h3>
-                    <p class="text-gray-500 text-sm mb-8 font-light">Rapid deployment of our elite pre-designed architectures.</p>
+                    <h3 class="text-2xl md:text-3xl font-bold outfit-font mb-2 uppercase">Standard Node</h3>
+                    <p class="text-gray-500 text-sm mb-8 font-light">Rapid deployment of elite pre-designed architectures.</p>
                     <div class="flex items-baseline gap-2 mb-8">
-                        <span class="text-5xl font-black outfit-font">₹19,999</span>
+                        <span class="text-4xl md:text-5xl font-black outfit-font">₹19,999</span>
                     </div>
-                    <ul class="space-y-5 text-sm text-gray-400">
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Elite Pre-Designed Framework</li>
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Brand Identity & Color Sync</li>
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Pixel<span class="text-purple-500">node</span> SEO Core</li>
-                        <li class="flex items-center gap-3 text-gray-700">✕ Custom Roadmap/Discovery</li>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Elite Framework</li>
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Brand Identity Sync</li>
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Core SEO Setup</li>
                     </ul>
                 </div>
-                <a href="contact.html" class="mt-12 block w-full py-5 rounded-2xl border border-white/10 text-center font-bold hover:bg-white hover:text-black transition-all">Deploy Now</a>
+                <a href="contact.html" class="mt-10 block w-full py-4 rounded-xl border border-white/10 text-center font-bold hover:bg-white hover:text-black transition-all">Deploy Now</a>
             </div>
 
-            <div class="relative p-10 rounded-[40px] bg-gradient-to-b from-purple-600 to-purple-800 border-2 border-purple-400 shadow-2xl shadow-purple-500/20 lg:scale-105 z-10 flex flex-col justify-between">
-                <div class="absolute top-6 right-8 bg-white/20 px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest">Premium Build</div>
+            <div class="relative p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-gradient-to-b from-purple-600 to-purple-800 border-2 border-purple-400 shadow-2xl shadow-purple-500/20 lg:scale-105 z-10 flex flex-col justify-between">
+                <div class="absolute top-4 right-6 bg-white/20 px-3 py-1 rounded-full text-[8px] font-black uppercase tracking-widest">Premium Build</div>
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center mb-6">
                         <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z"/></svg>
                     </div>
-                    <h3 class="text-3xl font-bold outfit-font mb-2">Custom Node</h3>
-                    <p class="text-purple-100/70 text-sm mb-8 leading-relaxed font-light">
-                        For those who need more than just a template. We build high-end Websites, Mobile Apps, and Custom Software designed for your brand.
-                    </p>
-                    
-                    <div class="text-4xl font-black outfit-font mb-8 uppercase tracking-tighter">On Call Finalize</div>
-                    
-                    <div class="mb-8 p-6 rounded-3xl bg-black/20 border border-white/10">
-                        <h4 class="text-[10px] uppercase font-black text-white/50 mb-4 tracking-widest">Full Custom Features:</h4>
-                        <ul class="space-y-4 text-sm text-purple-50">
-                            <li class="flex items-start gap-3"><span class="mt-1">✓</span><span><strong>Bespoke Web:</strong> Unique UI/UX optimized for conversion.</span></li>
-                            <li class="flex items-start gap-3"><span class="mt-1">✓</span><span><strong>App Ecosystem:</strong> Custom iOS/Android/SaaS Logic.</span></li>
-                            <li class="flex items-start gap-3"><span class="mt-1">✓</span><span><strong>AI Automation:</strong> Deep integration of AI calling & bots.</span></li>
-                            <li class="flex items-start gap-3"><span class="mt-1">✓</span><span><strong>Graphics Suite:</strong> Professional roadmap & visual assets.</span></li>
+                    <h3 class="text-2xl md:text-3xl font-bold outfit-font mb-2 uppercase">Custom Node</h3>
+                    <p class="text-purple-100/70 text-sm mb-6 font-light">Bespoke Apps, SaaS, and AI ecosystems built from scratch.</p>
+                    <div class="text-3xl md:text-4xl font-black outfit-font mb-6 uppercase tracking-tighter">On Call Finalize</div>
+                    <div class="mb-6 p-4 rounded-2xl bg-black/20 border border-white/10">
+                        <ul class="space-y-3 text-xs md:text-sm text-purple-50">
+                            <li class="flex items-start gap-2"><span>✓</span><span>Custom UI/UX Architecture</span></li>
+                            <li class="flex items-start gap-2"><span>✓</span><span>Advanced AI Integration</span></li>
+                            <li class="flex items-start gap-2"><span>✓</span><span>Full Graphics Suite</span></li>
                         </ul>
                     </div>
                 </div>
-                <a href="contact.html" class="block w-full py-5 bg-white text-black rounded-2xl text-center font-black uppercase tracking-tighter hover:bg-black hover:text-white transition-all shadow-xl">Book Consultation</a>
+                <a href="contact.html" class="block w-full py-4 bg-white text-black rounded-xl text-center font-black uppercase tracking-widest hover:bg-black hover:text-white transition-all shadow-xl text-xs">Book Consultation</a>
             </div>
 
-            <div class="group p-10 rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
+            <div class="group p-8 md:p-10 rounded-[30px] md:rounded-[40px] bg-white/5 border border-white/10 hover:border-purple-500/30 transition-all flex flex-col justify-between">
                 <div>
                     <div class="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center mb-6 group-hover:bg-purple-500/20 transition-colors">
                         <svg class="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 01-2 2v8a2 2 0 012 2z"/></svg>
                     </div>
-                    <h3 class="text-3xl font-bold outfit-font mb-2">Motion Node</h3>
-                    <p class="text-gray-500 text-sm mb-8 font-light">Viral content and high-end brand commercials.</p>
+                    <h3 class="text-2xl md:text-3xl font-bold outfit-font mb-2 uppercase">Motion Node</h3>
+                    <p class="text-gray-500 text-sm mb-8 font-light">Viral content and premium brand commercials.</p>
                     <div class="flex flex-col mb-8">
-                        <span class="text-gray-500 text-xs font-bold uppercase mb-1">Starts at</span>
-                        <span class="text-4xl font-black outfit-font">₹6,999</span>
+                        <span class="text-gray-500 text-[10px] font-bold uppercase mb-1">Starts at</span>
+                        <span class="text-4xl md:text-5xl font-black outfit-font">₹6,999</span>
                     </div>
-                    <ul class="space-y-5 text-sm text-gray-400">
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Professional Color Grading</li>
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Dynamic Motion Graphics</li>
-                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Specifications-based Pricing</li>
-                        <li class="flex items-center gap-3 text-gray-600">✕ Custom UI/UX Strategy</li>
+                    <ul class="space-y-4 text-sm text-gray-400">
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Color Grading</li>
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Motion Graphics</li>
+                        <li class="flex items-center gap-3"><span class="text-purple-500">✓</span> Custom Scripting</li>
                     </ul>
                 </div>
-                <a href="contact.html" class="mt-12 block w-full py-5 rounded-2xl border border-white/10 text-center font-bold hover:bg-white hover:text-black transition-all">Get Quote</a>
+                <a href="contact.html" class="mt-10 block w-full py-4 rounded-xl border border-white/10 text-center font-bold hover:bg-white hover:text-black transition-all">Get Quote</a>
             </div>
         </div>
 
-        <section class="max-w-6xl mx-auto py-24 border-t border-white/5">
+        <section class="max-w-6xl mx-auto py-16 md:py-24 border-t border-white/5">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold outfit-font mb-4 uppercase tracking-widest">Our Custom Build <span class="text-purple-500">Roadmap</span></h2>
-                <p class="text-gray-500 max-w-xl mx-auto font-light">From initial discovery call to launching your custom ecosystem.</p>
+                <h2 class="text-3xl md:text-4xl font-bold outfit-font mb-4 uppercase tracking-widest">The <span class="text-purple-500">Roadmap</span></h2>
+                <p class="text-gray-500 max-w-xl mx-auto font-light text-sm">Our structured process for every custom build.</p>
             </div>
             
-            
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center relative">
-                <div>
-                    <div class="w-16 h-16 rounded-full bg-purple-600/10 border border-purple-500/20 mx-auto flex items-center justify-center mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-center">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center mb-4">
                         <span class="text-purple-500 font-black">01</span>
                     </div>
-                    <h4 class="font-bold mb-2 uppercase text-sm">Discovery</h4>
-                    <p class="text-xs text-gray-500 font-light">Deep analysis of brand needs and user goals.</p>
+                    <h4 class="font-bold mb-2 uppercase text-xs">Discovery</h4>
+                    <p class="text-[10px] text-gray-500 font-light max-w-[150px]">Analysis of brand needs and user goals.</p>
                 </div>
-                <div>
-                    <div class="w-16 h-16 rounded-full bg-purple-600/10 border border-purple-500/20 mx-auto flex items-center justify-center mb-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center mb-4">
                         <span class="text-purple-500 font-black">02</span>
                     </div>
-                    <h4 class="font-bold mb-2 uppercase text-sm">Strategic Mapping</h4>
-                    <p class="text-xs text-gray-500 font-light">Finalizing functionality, roadmap, and price.</p>
+                    <h4 class="font-bold mb-2 uppercase text-xs">Strategy</h4>
+                    <p class="text-[10px] text-gray-500 font-light max-w-[150px]">Finalizing roadmap and technical logic.</p>
                 </div>
-                <div>
-                    <div class="w-16 h-16 rounded-full bg-purple-600/10 border border-purple-500/20 mx-auto flex items-center justify-center mb-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center mb-4">
                         <span class="text-purple-500 font-black">03</span>
                     </div>
-                    <h4 class="font-bold mb-2 uppercase text-sm">Graphic Design</h4>
-                    <p class="text-xs text-gray-500 font-light">Interactive UI prototyping and visual assets.</p>
+                    <h4 class="font-bold mb-2 uppercase text-xs">Design</h4>
+                    <p class="text-[10px] text-gray-500 font-light max-w-[150px]">Interactive prototyping and UI design.</p>
                 </div>
-                <div>
-                    <div class="w-16 h-16 rounded-full bg-purple-600/10 border border-purple-500/20 mx-auto flex items-center justify-center mb-6">
+                <div class="flex flex-col items-center">
+                    <div class="w-12 h-12 rounded-full bg-purple-600/10 border border-purple-500/20 flex items-center justify-center mb-4">
                         <span class="text-purple-500 font-black">04</span>
                     </div>
-                    <h4 class="font-bold mb-2 uppercase text-sm">Launch Node</h4>
-                    <p class="text-xs text-gray-500 font-light">Technical deployment and live optimization.</p>
+                    <h4 class="font-bold mb-2 uppercase text-xs">Launch</h4>
+                    <p class="text-[10px] text-gray-500 font-light max-w-[150px]">Technical deployment and optimization.</p>
                 </div>
             </div>
         </section>
 
-        <div class="pb-10 flex justify-end">
-            <span class="text-[9px] uppercase tracking-widest font-bold text-gray-700">* Terms and conditions apply</span>
+        <div class="pb-10 flex justify-center md:justify-end">
+            <span class="text-[8px] uppercase tracking-widest font-bold text-gray-700">* Prices subject to requirements.</span>
         </div>
     </main>
 
@@ -152,5 +166,6 @@
         <p class="text-gray-600 text-[10px] uppercase tracking-widest font-bold">© 2025 Pixelnode Agency. All Nodes Reserved.</p>
     </footer>
 
+    <script src="script.js"></script>
 </body>
 </html>
