@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
-**PixelNode Agency** — a modern, responsive agency project built for showcasing creative digital services, portfolios, and client work.
+**PixelNode Agency**  - a modern, responsive agency project built for showcasing creative digital services, portfolios, and client work.
 
 > A clean and professional landing page / full-stack agency web app (placeholder content — customize as needed).
 
