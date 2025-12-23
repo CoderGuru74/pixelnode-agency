@@ -30,9 +30,7 @@ Whether you're presenting services, client portfolios, or team expertise, PixelN
 
 > Update this section with tech you actually use (e.g., React, Next.js, Tailwind, etc.)
 
-- **Frontend:** HTML5, CSS3, JavaScript  
-- **Framework (optional):** React
-- **Styling:** Tailwind CSS   
+- **Frontend:** HTML5, CSS3, JavaScript (Vanilla JS)  
 - **Deployment:** Vercel
 
 ---
