@@ -1,35 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@800;900&display=swap');
 
-/* --- GLOBAL SETTINGS --- */
+/* --- 1. GLOBAL SETTINGS --- */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
-/* 1. CUSTOM PURPLE SCROLLBAR */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: #020202;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #a855f7;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #7c3aed;
-}
-
-/* 2. PROFESSIONAL TEXT SELECTION */
-::selection {
-    background: #a855f7;
-    color: white;
-}
+html { scroll-behavior: smooth; }
 
 body, html {
     margin: 0;
@@ -37,23 +15,19 @@ body, html {
     background: #020202;
     color: white;
     font-family: 'Inter', sans-serif;
-    overflow-x: hidden;
     width: 100%;
+}
+
+.index-page {
+    height: 100vh !important;
+    width: 100vw !important;
+    overflow: hidden !important; 
+    position: fixed;
 }
 
 .outfit-font { font-family: 'Outfit', sans-serif; }
 
-#canvas-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    pointer-events: none;
-}
-
-/* --- 3. NODE PRE-LOADER STYLES --- */
+/* --- 2. NODE PRE-LOADER --- */
 #loader {
     position: fixed;
     inset: 0;
@@ -96,12 +70,9 @@ body, html {
 }
 
 @keyframes loaderPulse {
-    0% { transform: scale(0.8); opacity: 0.3; }
+    0%, 100% { transform: scale(0.8); opacity: 0.3; }
     50% { transform: scale(1.2); opacity: 0.6; }
-    100% { transform: scale(0.8); opacity: 0.3; }
 }
-
-.loader-text { text-align: center; }
 
 #loader-status {
     font-family: 'Outfit', sans-serif;
@@ -127,10 +98,9 @@ body, html {
     transition: width 0.4s ease;
 }
 
-/* Hide scroll when loading */
 body.loading { overflow: hidden; }
 
-/* --- NAVIGATION --- */
+/* --- 3. NAVIGATION --- */
 .nav-glass {
     background: rgba(2, 2, 2, 0.85);
     backdrop-filter: blur(20px);
@@ -146,31 +116,25 @@ body.loading { overflow: hidden; }
     animation: shineEffect 5s linear infinite;
 }
 
-@keyframes shineEffect {
-    to { background-position: 200% center; }
-}
+@keyframes shineEffect { to { background-position: 200% center; } }
 
-/* --- MOBILE SIDEBAR (RIGHT SLIDE) --- */
+/* --- 4. MOBILE SIDEBAR --- */
 #mobile-menu {
     position: fixed;
     top: 0;
-    right: -110%; /* Hidden off-screen right */
+    right: -110%;
     width: 85%;   
     height: 100vh;
     background: rgba(2, 2, 2, 0.98);
     backdrop-filter: blur(25px);
-    -webkit-backdrop-filter: blur(25px);
-    border-left: 1px solid rgba(168, 85, 247, 0.2);
     z-index: 10000;
     transition: right 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     flex-direction: column;
-    padding: 120px 40px 40px;
+    padding: 120px 40px;
 }
 
-#mobile-menu.active {
-    right: 0 !important; 
-}
+#mobile-menu.active { right: 0 !important; }
 
 #menu-overlay {
     position: fixed;
@@ -182,55 +146,55 @@ body.loading { overflow: hidden; }
     transition: opacity 0.4s ease;
 }
 
-#menu-overlay.active {
-    opacity: 1 !important;
-    pointer-events: auto;
+#menu-overlay.active { opacity: 1 !important; pointer-events: auto; }
+
+/* --- 5. BACKGROUND & CANVAS --- */
+#canvas-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
 }
 
-#close-btn {
-    position: absolute;
-    top: 30px;
-    right: 25px;
-    z-index: 10001;
-}
-
-/* --- MOBILE RESPONSIVENESS --- */
-@media (max-width: 768px) {
-    .nav-glass {
-        padding: 1.2rem 1.2rem !important;
-    }
-
-    .nav-brand-wrapper {
-        flex-direction: column;
-        align-items: flex-start !important;
-        gap: 2px !important;
-    }
-
-    .msme-tag-mobile {
-        font-size: 7.5px !important;
-        border: none !important;
-        padding-left: 0 !important;
-        color: #a855f7;
-    }
-
-    main {
-        padding-top: 140px !important;
-        padding-left: 24px !important;
-        padding-right: 24px !important;
-    }
-
-    h1 {
-        font-size: 3.5rem !important;
-        line-height: 1.1 !important;
-    }
-}
-
-/* --- ANIMATIONS --- */
-.animate-pulse-slow {
-    animation: pulseGlow 8s ease-in-out infinite;
-}
+.animate-pulse-slow { animation: pulseGlow 8s ease-in-out infinite; }
 
 @keyframes pulseGlow {
     0%, 100% { opacity: 0.2; transform: scale(1); }
     50% { opacity: 0.4; transform: scale(1.1); }
+}
+
+/* --- 6. LAPTOP SCREEN FIX --- */
+@media (min-width: 1024px) {
+    main.hero-container {
+        padding-top: 150px !important; 
+        justify-content: flex-start !important;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    h1 {
+        font-size: 6.2rem !important; 
+        line-height: 0.9 !important;
+        margin-bottom: 2rem !important;
+    }
+
+    /* Animation position restored to original */
+    #canvas-container canvas {
+        transform: none !important; 
+    }
+}
+
+/* --- 7. MOBILE SPECIFIC --- */
+@media (max-width: 768px) {
+    .hero-container {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    h1 { font-size: 3.5rem !important; }
 }
