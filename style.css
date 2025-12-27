@@ -7,7 +7,9 @@
     padding: 0;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+}
 
 body, html {
     margin: 0;
@@ -18,6 +20,7 @@ body, html {
     width: 100%;
 }
 
+/* Landing Page Viewport Lock */
 .index-page {
     height: 100vh !important;
     width: 100vw !important;
@@ -106,6 +109,7 @@ body.loading { overflow: hidden; }
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-bottom: 1px solid rgba(168, 85, 247, 0.15);
+    transition: padding 0.3s ease;
 }
 
 .shine-text {
@@ -182,19 +186,41 @@ body.loading { overflow: hidden; }
         margin-bottom: 2rem !important;
     }
 
-    /* Animation position restored to original */
     #canvas-container canvas {
         transform: none !important; 
     }
 }
 
-/* --- 7. MOBILE SPECIFIC --- */
+/* --- 7. MOBILE SCREEN FIX (Overlap Solution) --- */
 @media (max-width: 768px) {
+    /* Stack Brand and MSME Tagline */
+    .nav-brand-wrapper {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 4px !important;
+        max-width: 70%;
+    }
+
+    .msme-tag-mobile {
+        font-size: 6.5px !important;
+        border: none !important;
+        padding-left: 0 !important;
+        line-height: 1.2;
+        display: block !important;
+        color: rgba(168, 85, 247, 0.8) !important;
+    }
+
+    .nav-glass {
+        padding: 1rem 1.2rem !important;
+    }
+
     .hero-container {
         height: 100vh;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        padding-top: 100px !important; /* Prevents text hitting navbar */
     }
+
     h1 { font-size: 3.5rem !important; }
 }
