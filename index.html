@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PixelNode | Beyond Code, Beyond Boundaries</title>
     <link rel="icon" type="image/png" href="p-modified.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -14,17 +14,18 @@
 
     <div id="canvas-container"></div>
 
-    <nav class="fixed w-full z-50 py-6 px-10 flex justify-between items-center nav-glass">
-        <div class="flex items-center gap-6"> <div class="flex items-center gap-3">
-                <img src="p-modified.png" alt="PixelNode Logo" class="h-10 w-auto">
-                <div class="text-2xl font-black outfit-font tracking-tighter uppercase">
+    <nav class="fixed w-full z-50 py-6 px-6 md:px-10 flex justify-between items-center nav-glass">
+        <div class="flex items-center gap-6 nav-brand-wrapper">
+            <div class="flex items-center gap-3">
+                <img src="p-modified.png" alt="PixelNode Logo" class="h-8 md:h-10 w-auto">
+                <div class="text-xl md:text-2xl font-black outfit-font tracking-tighter uppercase">
                     <a href="index.html">Pixel<span class="text-purple-600">node</span></a>
                 </div>
             </div>
             
-            <div class="hidden lg:flex items-center gap-3 pl-6 border-l border-white/10">
-                <div class="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse"></div>
-                <span class="text-[9px] font-black uppercase tracking-[0.2em] text-gray-400">
+            <div class="msme-tag-mobile flex items-center gap-2 md:pl-6 md:border-l md:border-white/10">
+                <div class="w-1.5 h-1.5 rounded-full bg-purple-500 animate-pulse hidden md:block"></div>
+                <span class="text-[7.5px] md:text-[9px] font-black uppercase tracking-[0.2em] text-gray-400">
                     Registered under Ministry of MSME, Govt. of India
                 </span>
             </div>
@@ -36,36 +37,54 @@
             <a href="pricing.html" class="hover:text-purple-500 transition">Pricing</a>
             <a href="contact.html" class="bg-white text-black px-6 py-2 rounded-full hover:bg-purple-600 hover:text-white transition">Contact</a>
         </div>
+
+        <button id="menu-btn" class="md:hidden flex items-center justify-center text-white focus:outline-none p-2 rounded-lg">
+            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+        </button>
     </nav>
+
+    <div id="mobile-menu" class="fixed inset-0 bg-black/98 z-[100] flex flex-col items-center justify-center gap-10 hidden">
+        <button id="close-btn" class="absolute top-10 right-6 text-white p-2">
+            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        <a href="services.html" class="text-3xl font-black outfit-font uppercase">Services</a>
+        <a href="about.html" class="text-3xl font-black outfit-font uppercase">About Us</a>
+        <a href="pricing.html" class="text-3xl font-black outfit-font uppercase">Pricing</a>
+        <a href="contact.html" class="text-3xl font-black outfit-font text-purple-500 uppercase">Contact</a>
+    </div>
 
     <main class="relative z-10 min-h-screen flex flex-col justify-center px-10 md:px-20">
         <div class="absolute top-1/4 right-1/4 w-96 h-96 bg-purple-600/20 blur-[120px] rounded-full -z-10 animate-pulse-slow"></div>
 
         <div class="max-w-5xl">
-            <div class="flex items-center gap-4 mb-8 animate-fade-in">
+            <div class="flex items-center gap-4 mb-8">
                 <div class="relative flex h-3 w-3">
                     <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
                     <span class="relative inline-flex rounded-full h-3 w-3 bg-purple-500"></span>
                 </div>
-                <span class="text-xs md:text-sm font-black uppercase tracking-[0.6em] text-purple-400/80">
+                <span class="text-[10px] md:text-sm font-black uppercase tracking-[0.4em] md:tracking-[0.6em] text-purple-400/80">
                     Beyond Code, Beyond Boundaries
                 </span>
             </div>
 
-            <h1 class="text-7xl md:text-[130px] font-black outfit-font leading-[0.85] tracking-tighter mb-10 uppercase">
+            <h1 class="text-5xl md:text-[130px] font-black outfit-font leading-[0.9] md:leading-[0.85] tracking-tighter mb-10 uppercase">
                 CRAFTING <br><span class="text-purple-500 shine-text">DIGITAL</span>
             </h1>
             
-            <p class="text-gray-400 text-lg md:text-2xl max-w-2xl font-light leading-relaxed mb-12 border-l-2 border-purple-500/30 pl-8">
+            <p class="text-gray-400 text-base md:text-2xl max-w-2xl font-light leading-relaxed mb-12 border-l-2 border-purple-500/30 pl-6 md:pl-8">
                 We build high-performance ecosystems and autonomous AI agents for the next generation of global business.
             </p>
 
-            <div class="flex flex-wrap gap-6">
-                <a href="contact.html" class="group relative bg-purple-600 px-12 py-5 rounded-2xl font-bold text-lg overflow-hidden transition-all shadow-2xl shadow-purple-500/20 active:scale-95">
+            <div class="flex flex-wrap gap-4 md:gap-6">
+                <a href="contact.html" class="group relative bg-purple-600 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg overflow-hidden transition-all shadow-2xl shadow-purple-500/20 active:scale-95">
                     <span class="relative z-10">Start a Project</span>
                     <div class="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity"></div>
                 </a>
-                <a href="services.html" class="bg-white/5 border border-white/10 px-12 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 backdrop-blur-md transition-all border-b-4 border-b-purple-500/50">
+                <a href="services.html" class="bg-white/5 border border-white/10 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg hover:bg-white/10 backdrop-blur-md transition-all border-b-4 border-b-purple-500/50">
                     Our Services
                 </a>
             </div>
