@@ -4,31 +4,40 @@
 
 window.onload = function() {
     
-    // --- 1. MOBILE MENU LOGIC ---
+    // --- 1. MOBILE MENU & SIDEBAR LOGIC ---
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
     const mobileMenu = document.getElementById('mobile-menu');
+    const overlay = document.getElementById('menu-overlay');
+    const menuLinks = document.querySelectorAll('#mobile-menu a');
 
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-            document.body.style.overflow = 'hidden'; 
-        });
+    // FORCED RESET: Ensure menu is hidden off-screen every time a new page loads
+    if (mobileMenu) mobileMenu.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    document.body.style.overflow = 'auto';
 
-        const hideMenu = () => {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            document.body.style.overflow = 'auto';
-        };
-
-        if (closeBtn) closeBtn.addEventListener('click', hideMenu);
+    const toggleMenu = () => {
+        if (!mobileMenu || !overlay) return;
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
         
-        // Close menu if a link is clicked
-        const mobileLinks = mobileMenu.querySelectorAll('a');
-        mobileLinks.forEach(link => link.addEventListener('click', hideMenu));
-    }
-    
+        // Prevent background scrolling when menu is open
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : 'auto';
+    };
+
+    if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
+    if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
+    if (overlay) overlay.addEventListener('click', toggleMenu);
+
+    // AUTO-CLOSE: When any link is clicked, close the menu immediately
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            if (overlay) overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+    });
+
     // --- 2. 3D TORUS ENGINE (MOBILE OPTIMIZED) ---
     const container = document.getElementById('canvas-container');
     if (container) {
@@ -43,11 +52,9 @@ window.onload = function() {
         const material = new THREE.MeshNormalMaterial({ wireframe: true, transparent: true, opacity: 0.4 });
         const shape = new THREE.Mesh(geometry, material);
 
-        // Responsive position & scale logic
         if(window.innerWidth < 768) {
             shape.scale.set(0.6, 0.6, 0.6); 
-            shape.position.x = 0;
-            shape.position.y = 5;
+            shape.position.set(0, 5, 0);
         } else {
             shape.position.x = 20;
         }
