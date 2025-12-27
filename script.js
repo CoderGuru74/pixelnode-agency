@@ -1,20 +1,50 @@
 /**
  * PixelNode Agency - Master Script
+ * Includes: Node Loader, Mobile Sidebar, 3D Engine, Swiper, and EmailJS
  */
 
 window.onload = function() {
     
-    // --- 1. MOBILE MENU & SIDEBAR LOGIC ---
+    // --- 1. NODE PRE-LOADER LOGIC ---
+    const loader = document.getElementById('loader');
+    const progressBar = document.getElementById('loader-progress');
+    const statusText = document.getElementById('loader-status');
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        // Random incremental progress for a "realistic" software load feel
+        progress += Math.random() * 25; 
+        if (progress > 100) progress = 100;
+        
+        if (progressBar) progressBar.style.width = `${progress}%`;
+        
+        if (progress === 100) {
+            clearInterval(interval);
+            setTimeout(() => {
+                if (statusText) statusText.innerText = "NODE_READY";
+                setTimeout(() => {
+                    if (loader) {
+                        loader.style.opacity = '0';
+                        loader.style.visibility = 'hidden';
+                    }
+                    // Enable scrolling once loaded
+                    document.body.classList.remove('loading');
+                    document.body.style.overflow = 'auto';
+                }, 400);
+            }, 300);
+        }
+    }, 150);
+
+    // --- 2. MOBILE MENU & SIDEBAR LOGIC (RIGHT SIDE) ---
     const menuBtn = document.getElementById('menu-btn');
     const closeBtn = document.getElementById('close-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const overlay = document.getElementById('menu-overlay');
     const menuLinks = document.querySelectorAll('#mobile-menu a');
 
-    // FORCED RESET: Ensure menu is hidden off-screen every time a new page loads
+    // Forced Reset: Ensure menu is closed on fresh load
     if (mobileMenu) mobileMenu.classList.remove('active');
     if (overlay) overlay.classList.remove('active');
-    document.body.style.overflow = 'auto';
 
     const toggleMenu = () => {
         if (!mobileMenu || !overlay) return;
@@ -29,7 +59,7 @@ window.onload = function() {
     if (closeBtn) closeBtn.addEventListener('click', toggleMenu);
     if (overlay) overlay.addEventListener('click', toggleMenu);
 
-    // AUTO-CLOSE: When any link is clicked, close the menu immediately
+    // Auto-close menu when a link is clicked
     menuLinks.forEach(link => {
         link.addEventListener('click', () => {
             mobileMenu.classList.remove('active');
@@ -38,22 +68,24 @@ window.onload = function() {
         });
     });
 
-    // --- 2. 3D TORUS ENGINE (MOBILE OPTIMIZED) ---
+    // --- 3. 3D TORUS ENGINE (MOBILE OPTIMIZED) ---
     const container = document.getElementById('canvas-container');
-    if (container) {
+    if (container && typeof THREE !== 'undefined') {
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
 
         const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
-        const material = new THREE.MeshNormalMaterial({ wireframe: true, transparent: true, opacity: 0.4 });
+        const material = new THREE.MeshNormalMaterial({ wireframe: true, transparent: true, opacity: 0.3 });
         const shape = new THREE.Mesh(geometry, material);
 
+        // Position based on screen size
         if(window.innerWidth < 768) {
-            shape.scale.set(0.6, 0.6, 0.6); 
+            shape.scale.set(0.5, 0.5, 0.5); 
             shape.position.set(0, 5, 0);
         } else {
             shape.position.x = 20;
@@ -64,8 +96,8 @@ window.onload = function() {
 
         function animate3D() {
             requestAnimationFrame(animate3D);
-            shape.rotation.x += 0.003;
-            shape.rotation.y += 0.004;
+            shape.rotation.x += 0.002;
+            shape.rotation.y += 0.002;
             renderer.render(scene, camera);
         }
         animate3D();
@@ -77,7 +109,7 @@ window.onload = function() {
         });
     }
 
-    // --- 3. TESTIMONIAL SWIPER ---
+    // --- 4. TESTIMONIAL SWIPER ---
     const swiperTestimonial = document.querySelector('.testimonial-swiper');
     if (swiperTestimonial && typeof Swiper !== 'undefined') {
         new Swiper('.testimonial-swiper', {
@@ -88,32 +120,40 @@ window.onload = function() {
         });
     }
 
-    // --- 4. CONTACT FORM (EMAILJS) ---
+    // --- 5. CONTACT FORM (EMAILJS) ---
     const contactForm = document.getElementById('contact-form');
     const submitBtn = document.getElementById('button');
 
-    if (contactForm) {
+    if (contactForm && typeof emailjs !== 'undefined') {
         emailjs.init("qXaVHzfPPW5hguL47"); 
 
         contactForm.addEventListener('submit', function(event) {
             event.preventDefault();
-            submitBtn.innerText = 'SENDING NODE...';
-            submitBtn.disabled = true;
+            if (submitBtn) {
+                submitBtn.innerText = 'SENDING NODE...';
+                submitBtn.disabled = true;
+            }
 
             emailjs.sendForm('service_8uqw275', 'template_uk0c9ey', this)
                 .then(() => {
-                    submitBtn.innerText = 'SUCCESS!';
-                    submitBtn.style.backgroundColor = '#a855f7';
+                    if (submitBtn) {
+                        submitBtn.innerText = 'SUCCESS!';
+                        submitBtn.style.backgroundColor = '#a855f7';
+                    }
                     alert('Node Request Sent Successfully!');
                     contactForm.reset();
                     setTimeout(() => {
-                        submitBtn.innerText = 'SEND NODE REQUEST';
-                        submitBtn.disabled = false;
-                        submitBtn.style.backgroundColor = '#ffffff';
+                        if (submitBtn) {
+                            submitBtn.innerText = 'SEND NODE REQUEST';
+                            submitBtn.disabled = false;
+                            submitBtn.style.backgroundColor = '#ffffff';
+                        }
                     }, 5000);
                 }, (err) => {
-                    submitBtn.innerText = 'FAILED';
-                    submitBtn.disabled = false;
+                    if (submitBtn) {
+                        submitBtn.innerText = 'FAILED';
+                        submitBtn.disabled = false;
+                    }
                     alert('Error: ' + JSON.stringify(err));
                 });
         });

@@ -5,12 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>PixelNode | Beyond Code, Beyond Boundaries</title>
     <link rel="icon" type="image/png" href="p-modified.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-[#020202] text-white overflow-hidden">
+<body class="bg-[#020202] text-white overflow-hidden loading">
+
+    <div id="loader">
+        <div class="loader-content">
+            <div class="node-icon">
+                <div class="node-pulse"></div>
+                <img src="p-modified.png" alt="PixelNode Logo">
+            </div>
+            <div class="loader-text">
+                <span id="loader-status">INITIALIZING_NODE</span>
+                <div class="loader-bar-container">
+                    <div id="loader-progress"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div id="canvas-container"></div>
     
@@ -56,9 +72,9 @@
         
         <div class="flex flex-col gap-8 text-right">
             <span class="text-purple-500 text-[10px] uppercase tracking-[0.5em] font-bold mb-2">Navigation</span>
-            <a href="services.html" class="text-4xl font-black outfit-font uppercase">Services</a>
-            <a href="about.html" class="text-4xl font-black outfit-font uppercase">About Us</a>
-            <a href="pricing.html" class="text-4xl font-black outfit-font uppercase">Pricing</a>
+            <a href="services.html" class="text-4xl font-black outfit-font uppercase hover:text-purple-500 transition">Services</a>
+            <a href="about.html" class="text-4xl font-black outfit-font uppercase hover:text-purple-500 transition">About Us</a>
+            <a href="pricing.html" class="text-4xl font-black outfit-font uppercase hover:text-purple-500 transition">Pricing</a>
             <a href="contact.html" class="text-4xl font-black outfit-font text-purple-500 uppercase">Contact</a>
         </div>
 
@@ -94,10 +110,10 @@
             </p>
 
             <div class="flex flex-wrap gap-4 md:gap-6">
-                <a href="contact.html" class="group relative bg-purple-600 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg overflow-hidden transition-all active:scale-95">
+                <a href="contact.html" class="group relative bg-purple-600 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg overflow-hidden transition-all active:scale-95 shadow-xl shadow-purple-500/20">
                     <span class="relative z-10">Start a Project</span>
                 </a>
-                <a href="services.html" class="bg-white/5 border border-white/10 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg backdrop-blur-md">
+                <a href="services.html" class="bg-white/5 border border-white/10 px-10 py-4 md:px-12 md:py-5 rounded-2xl font-bold text-sm md:text-lg hover:bg-white/10 backdrop-blur-md transition-all">
                     Our Services
                 </a>
             </div>

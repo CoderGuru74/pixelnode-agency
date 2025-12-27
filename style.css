@@ -7,6 +7,30 @@
     padding: 0;
 }
 
+/* 1. CUSTOM PURPLE SCROLLBAR */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #020202;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #a855f7;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7c3aed;
+}
+
+/* 2. PROFESSIONAL TEXT SELECTION */
+::selection {
+    background: #a855f7;
+    color: white;
+}
+
 body, html {
     margin: 0;
     padding: 0;
@@ -29,7 +53,84 @@ body, html {
     pointer-events: none;
 }
 
-/* --- NAVIGATION GLASS EFFECT --- */
+/* --- 3. NODE PRE-LOADER STYLES --- */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #020202;
+    z-index: 100000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.loader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.node-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.node-icon img {
+    width: 100%;
+    position: relative;
+    z-index: 2;
+}
+
+.node-pulse {
+    position: absolute;
+    inset: 0;
+    background: #a855f7;
+    border-radius: 50%;
+    filter: blur(20px);
+    animation: loaderPulse 2s infinite;
+    z-index: 1;
+    opacity: 0.5;
+}
+
+@keyframes loaderPulse {
+    0% { transform: scale(0.8); opacity: 0.3; }
+    50% { transform: scale(1.2); opacity: 0.6; }
+    100% { transform: scale(0.8); opacity: 0.3; }
+}
+
+.loader-text { text-align: center; }
+
+#loader-status {
+    font-family: 'Outfit', sans-serif;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.4em;
+    color: #a855f7;
+    text-transform: uppercase;
+}
+
+.loader-bar-container {
+    width: 150px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+#loader-progress {
+    width: 0%;
+    height: 100%;
+    background: #a855f7;
+    transition: width 0.4s ease;
+}
+
+/* Hide scroll when loading */
+body.loading { overflow: hidden; }
+
+/* --- NAVIGATION --- */
 .nav-glass {
     background: rgba(2, 2, 2, 0.85);
     backdrop-filter: blur(20px);
@@ -49,11 +150,11 @@ body, html {
     to { background-position: 200% center; }
 }
 
-/* --- MOBILE SIDEBAR DRAWER (STRICTLY RIGHT) --- */
+/* --- MOBILE SIDEBAR (RIGHT SLIDE) --- */
 #mobile-menu {
     position: fixed;
     top: 0;
-    right: -110%; /* Forced completely off-screen to the right */
+    right: -110%; /* Hidden off-screen right */
     width: 85%;   
     height: 100vh;
     background: rgba(2, 2, 2, 0.98);
@@ -67,7 +168,6 @@ body, html {
     padding: 120px 40px 40px;
 }
 
-/* Slide in from right when active */
 #mobile-menu.active {
     right: 0 !important; 
 }
@@ -100,7 +200,6 @@ body, html {
         padding: 1.2rem 1.2rem !important;
     }
 
-    /* Stacks Logo and MSME text on mobile */
     .nav-brand-wrapper {
         flex-direction: column;
         align-items: flex-start !important;
