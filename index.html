@@ -84,6 +84,11 @@
             word-wrap: break-word;
             overflow-wrap: break-word;
         }
+
+        /* Style for Dropdown placeholder */
+        select option:disabled {
+            color: #6b7280;
+        }
     </style>
 </head>
 <body class="bg-[#020202] text-white index-page scroll-smooth">
@@ -293,10 +298,25 @@
         <div class="relative w-full max-w-lg p-8 md:p-12 rounded-[40px] bg-[#0A0A0A] border border-white/10 shadow-2xl">
             <button id="close-modal-x" class="absolute top-6 right-8 text-gray-500 hover:text-white transition text-4xl leading-none">&times;</button>
             <h2 class="text-3xl font-black outfit-font mb-2 uppercase italic">DEPLOY <span class="text-purple-500">PROJECT</span></h2>
+            <p class="text-gray-500 text-sm mb-8 uppercase tracking-widest font-bold">Node_Connection: Secure</p>
+            
             <form id="contact-form" class="flex flex-col gap-5">
-                <input type="text" name="from_name" placeholder="YOUR NAME" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm">
-                <input type="email" name="user_email" placeholder="EMAIL ADDRESS" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm">
-                <textarea name="message" rows="4" placeholder="PROJECT BRIEF" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm resize-none"></textarea>
+                <input type="text" name="from_name" placeholder="YOUR NAME" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm text-white">
+                <input type="email" name="user_email" placeholder="EMAIL ADDRESS" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm text-white">
+                
+                <select name="service_type" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm text-gray-400 appearance-none">
+                    <option value="" disabled selected italic>SELECT SERVICE NODE</option>
+                    <option value="Get Free Audit">GET FREE WEBSITE AUDIT</option>
+                    <option value="SEO Optimization">SEO (SEARCH ENGINE OPTIMIZATION)</option>
+                    <option value="Web Architecture">WEB SYSTEMS / DEVELOPMENT</option>
+                    <option value="Mobile App">MOBILE APP DEVELOPMENT</option>
+                    <option value="Branding & Media">BRANDING & MEDIA</option>
+                    <option value="UI/UX Design">UI/UX DESIGN</option>
+                    <option value="AI Automation">AI AGENTS & AUTOMATION</option>
+                </select>
+
+                <textarea name="message" rows="4" placeholder="PROJECT BRIEF / WEBSITE URL" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:border-purple-500 outline-none transition text-sm resize-none text-white"></textarea>
+                
                 <button id="button" type="submit" class="bg-purple-600 text-white font-black py-5 rounded-2xl hover:bg-white hover:text-black transition-all uppercase tracking-widest mt-2">
                     Initiate Handshake
                 </button>
@@ -305,7 +325,7 @@
     </div>
 
     <footer class="py-10 text-center border-t border-white/5 relative z-10">
-        <p class="text-gray-600 text-[10px] uppercase tracking-widest font-bold">© 2026 PixelNode Agency. All Nodes Reserved.</p>
+        <p class="text-gray-600 text-[10px] uppercase tracking-widest font-bold">© 2025 PixelNode Agency. All Nodes Reserved.</p>
     </footer>
 
     <script src="script.js"></script>
@@ -320,7 +340,7 @@
         if(closeMenu) closeMenu.addEventListener('click', () => menuOverlay.classList.remove('active'));
         mobileLinks.forEach(link => link.addEventListener('click', () => menuOverlay.classList.remove('active')));
 
-        // MODAL TOGGLE SYSTEM (REPAIRED)
+        // MODAL TOGGLE SYSTEM
         const modal = document.getElementById('contact-modal');
         const openBtns = document.querySelectorAll('.open-form');
         const closeBtnX = document.getElementById('close-modal-x');
