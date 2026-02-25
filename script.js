@@ -1,6 +1,6 @@
 /**
  * PixelNode Agency - Master Script
- * Updated: Mobile-Optimized Scroll Indicator + Wave Grid + EmailJS + Modal Fix
+ * Updated: Mobile-Optimized Scroll Indicator + Wave Grid + EmailJS + Modal Repair
  */
 
 window.onload = function() {
@@ -23,11 +23,10 @@ window.onload = function() {
         const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Performance cap for mobile
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
         container.appendChild(renderer.domElement);
 
-        // WAVE GRID GEOMETRY
-        const gridCount = window.innerWidth < 768 ? 30 : 50; // Fewer points on mobile for speed
+        const gridCount = window.innerWidth < 768 ? 30 : 50; 
         const spacing = 4;
         const geometry = new THREE.BufferGeometry();
         const positions = new Float32Array(gridCount * gridCount * 3);
@@ -52,7 +51,6 @@ window.onload = function() {
 
         camera.position.z = 60;
 
-        // Interaction Variables
         let mouseX = 0, mouseY = 0;
         document.addEventListener('mousemove', (e) => {
             mouseX = (e.clientX - window.innerWidth / 2) / 100;
@@ -61,8 +59,6 @@ window.onload = function() {
 
         function animate(time) {
             requestAnimationFrame(animate);
-            
-            // 1. Animate Wave Grid
             const posAttr = grid.geometry.attributes.position;
             for (let i = 0; i < gridCount; i++) {
                 for (let j = 0; j < gridCount; j++) {
@@ -74,12 +70,9 @@ window.onload = function() {
                 }
             }
             grid.geometry.attributes.position.needsUpdate = true;
-
-            // 2. Camera Movement
             camera.position.x += (mouseX * 2 - camera.position.x) * 0.05;
             camera.position.y += (-mouseY * 2 - camera.position.y) * 0.05;
             camera.lookAt(scene.position);
-
             renderer.render(scene, camera);
         }
         animate(0);
@@ -93,68 +86,58 @@ window.onload = function() {
 
     // --- 3. SCROLL PERCENTAGE INDICATOR (Node_Sync) ---
     const scrollValue = document.getElementById('scroll-value');
-    const scrollIndicator = document.getElementById('scroll-percentage');
     
     window.addEventListener('scroll', () => {
-        const scrollTop = window.scrollY;
-        const docHeight = document.documentElement.scrollHeight;
-        const winHeight = window.innerHeight;
-        
-        const scrollPercent = Math.round((scrollTop / (docHeight - winHeight)) * 100);
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = Math.round((scrollTop / docHeight) * 100);
         
         if (scrollValue) {
-            const finalValue = Math.min(Math.max(scrollPercent, 0), 100);
-            scrollValue.innerText = finalValue;
-        }
-
-        // Auto-hide indicator at very top on mobile to keep nav clean
-        if (window.innerWidth < 768 && scrollIndicator) {
-            if (scrollTop < 50) {
-                scrollIndicator.style.opacity = '0';
-            } else {
-                scrollIndicator.style.opacity = '1';
-                scrollIndicator.style.transition = 'opacity 0.3s ease';
-            }
+            scrollValue.innerText = Math.min(Math.max(scrolled, 0), 100);
         }
     });
 
-    // --- 4. SCROLL & MODAL LOGIC (FIXED) ---
-    const openBtns = document.querySelectorAll('.open-form');
+    // --- 4. MODAL & NAVIGATION LOGIC (REPAIRED) ---
     const modal = document.getElementById('contact-modal');
-    const closeModalBtn = document.getElementById('close-modal');
-    
-    openBtns.forEach(btn => {
-        btn.onclick = (e) => {
-            e.preventDefault();
-            if(modal) {
-                // Ensure correct classes are toggled
-                modal.classList.remove('opacity-0', 'pointer-events-none');
-                modal.classList.add('opacity-100', 'pointer-events-auto');
-                document.body.style.overflow = 'hidden';
-            }
+    const openBtns = document.querySelectorAll('.open-form');
+    const closeBtnX = document.getElementById('close-modal-x');
+
+    // Function to show modal
+    const showModal = (e) => {
+        if(e) e.preventDefault();
+        if(modal) {
+            modal.style.display = 'flex';
+            setTimeout(() => {
+                modal.classList.add('modal-active');
+                document.body.style.overflow = 'hidden'; // Lock scroll
+            }, 10);
         }
+    };
+
+    // Function to hide modal
+    const hideModal = () => {
+        if(modal) {
+            modal.classList.remove('modal-active');
+            setTimeout(() => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto'; // Unlock scroll
+            }, 500);
+        }
+    };
+
+    openBtns.forEach(btn => btn.addEventListener('click', showModal));
+
+    if (closeBtnX) {
+        closeBtnX.onclick = (e) => {
+            e.stopPropagation();
+            hideModal();
+        };
+    }
+
+    // Close on background click
+    window.addEventListener('click', (e) => {
+        if (e.target === modal) hideModal();
     });
-
-    if (closeModalBtn) {
-        closeModalBtn.onclick = () => {
-            if(modal) {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.classList.remove('opacity-100', 'pointer-events-auto');
-                document.body.style.overflow = 'auto';
-            }
-        };
-    }
-
-    // Close on clicking outside the modal content
-    if (modal) {
-        modal.onclick = (e) => {
-            if (e.target === modal) {
-                modal.classList.add('opacity-0', 'pointer-events-none');
-                modal.classList.remove('opacity-100', 'pointer-events-auto');
-                document.body.style.overflow = 'auto';
-            }
-        };
-    }
 
     // --- 5. EMAILJS ---
     const contactForm = document.getElementById('contact-form');
@@ -163,17 +146,20 @@ window.onload = function() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             const btn = document.getElementById('button');
+            const originalText = btn.innerText;
             btn.innerText = "SENDING NODE...";
+            
             emailjs.sendForm('service_8uqw275', 'template_uk0c9ey', this)
                 .then(() => {
                     btn.innerText = "SUCCESS!";
                     setTimeout(() => {
-                        modal.classList.add('opacity-0', 'pointer-events-none');
-                        modal.classList.remove('opacity-100', 'pointer-events-auto');
-                        document.body.style.overflow = 'auto';
-                        btn.innerText = "Initiate Handshake";
-                        this.reset(); // Reset form after success
+                        hideModal();
+                        btn.innerText = originalText;
+                        this.reset();
                     }, 2000);
+                }, (error) => {
+                    btn.innerText = "ERROR!";
+                    console.log('EmailJS Error:', error);
                 });
         });
     }

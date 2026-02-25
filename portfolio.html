@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portfolio | PixelNode Digital Solutions</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
@@ -34,47 +34,59 @@
             border: 1px solid rgba(79, 70, 229, 0.3);
         }
 
-        /* Dynamic Island */
         .dynamic-island {
-            width: 150px; height: 35px; background: #000000; border-radius: 20px;
+            width: 140px; height: 35px; background: #000000; border-radius: 20px;
             transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-            cursor: pointer; color: white; font-size: 10px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            cursor: pointer; color: white; font-size: 9px; font-weight: 900;
         }
-        .dynamic-island:hover { width: 180px; background: #4F46E5; }
+        .dynamic-island:hover { width: 160px; background: #4F46E5; }
 
-        /* Hero Image Stack */
-        .image-container { position: relative; width: 100%; max-width: 600px; height: 500px; }
+        /* FIXED HERO IMAGE HEIGHT FOR MOBILE GAP REDUCTION */
+        .image-container { position: relative; width: 100%; max-width: 500px; height: 300px; }
+        @media (min-width: 768px) { .image-container { height: 500px; max-width: 600px; } }
+        
         .main-img { position: absolute; width: 80%; border-radius: 30px; bottom: 0; left: 10%; z-index: 2; border: 1px solid rgba(255,255,255,0.4); }
-        .sub-img-left { position: absolute; width: 45%; border-radius: 20px; bottom: 15%; left: 0; z-index: 3; border: 6px solid white; }
-        .sub-img-right { position: absolute; width: 45%; border-radius: 20px; top: 5%; right: 0; z-index: 1; border: 6px solid white; }
+        .sub-img-left { position: absolute; width: 45%; border-radius: 20px; bottom: 15%; left: 0; z-index: 3; border: 4px solid white; }
+        .sub-img-right { position: absolute; width: 45%; border-radius: 20px; top: 5%; right: 0; z-index: 1; border: 4px solid white; }
 
         /* FIXED LOGO FITTING */
         .project-img-wrapper {
             width: 100%;
-            height: 320px;
+            height: 250px;
             overflow: hidden;
             border-radius: 30px;
-            background: #ffffff; /* Clean white background for logos */
+            background: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px; 
+            padding: 20px; 
         }
+        @media (min-width: 768px) { .project-img-wrapper { height: 320px; padding: 30px; } }
+
         .project-img-wrapper img {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* FIXED: Shows full logo without cutting it */
+            object-fit: contain;
             transition: transform 0.5s ease;
         }
 
         .audit-btn {
-            position: fixed; bottom: 30px; right: 30px; z-index: 90; background: #000000;
-            color: white; padding: 12px 24px; border-radius: 50px; font-size: 10px; font-weight: 900;
+            position: fixed; bottom: 20px; right: 20px; z-index: 90; background: #000000;
+            color: white; padding: 10px 20px; border-radius: 50px; font-size: 9px; font-weight: 900;
         }
     </style>
 </head>
 <body>
+
+    <div id="scroll-percentage" class="fixed top-20 right-4 md:right-10 z-[60]">
+        <div class="flex flex-col items-end">
+            <span class="text-[8px] font-black uppercase tracking-[0.3em] text-indigo-600 mb-1">Node_Sync</span>
+            <div class="text-xl md:text-2xl font-black outfit italic text-gray-900 leading-none">
+                <span id="scroll-value">0</span><span class="text-indigo-600">%</span>
+            </div>
+        </div>
+    </div>
 
     <div class="fixed top-6 left-1/2 -translate-x-1/2 z-[100]">
         <div class="dynamic-island uppercase" onclick="window.location.href='index.html'">
@@ -85,24 +97,24 @@
 
     <button onclick="requestAudit()" class="audit-btn uppercase shadow-2xl">Get Free Website Audit</button>
 
-    <header class="relative pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12">
-            <div class="lg:w-1/2">
-                <span class="bg-[#F0F0FF] text-[#4F46E5] px-4 py-2 rounded-full text-xs font-bold mb-6 inline-block uppercase tracking-widest italic">● Trusted by 20+ Local Businesses</span>
-                <h1 class="text-5xl md:text-7xl font-black outfit leading-tight mb-6">We Build <span class="text-gradient">High-Converting</span> Websites & Apps</h1>
-                <p class="text-gray-500 text-lg mb-10 max-w-lg leading-relaxed">Helping brands scale with performance-driven websites, apps, CRM automation, and ROI-focused marketing.</p>
-                <div class="flex flex-wrap gap-4 mb-16">
-                    <button onclick="window.scrollTo({top: document.getElementById('work').offsetTop - 100, behavior: 'smooth'})" class="bg-[#4F46E5] text-white px-8 py-4 rounded-xl font-bold hover:bg-indigo-700 transition uppercase text-xs shadow-lg">View Our Work →</button>
-                    <button onclick="openConsultationForm()" class="glass-card text-gray-800 px-8 py-4 rounded-xl font-bold hover:bg-gray-50 transition uppercase text-xs">▷ Get Free Consultation</button>
+    <header class="relative pt-24 md:pt-32 pb-4 md:pb-20 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-6 md:gap-12">
+            <div class="lg:w-1/2 text-center lg:text-left">
+                <span class="bg-[#F0F0FF] text-[#4F46E5] px-4 py-2 rounded-full text-[10px] font-bold mb-6 inline-block uppercase tracking-widest italic">● Trusted by 20+ Local Businesses</span>
+                <h1 class="text-4xl md:text-7xl font-black outfit leading-tight mb-6">We Build <span class="text-gradient">High-Converting</span> Websites & Apps</h1>
+                <p class="text-gray-500 text-sm md:text-lg mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">Helping brands scale with performance-driven websites, apps, CRM automation, and ROI-focused marketing.</p>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-3 mb-10 md:mb-16">
+                    <button onclick="window.scrollTo({top: document.getElementById('work').offsetTop - 80, behavior: 'smooth'})" class="bg-[#4F46E5] text-white px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold hover:bg-indigo-700 transition uppercase text-[10px] md:text-xs shadow-lg">View Our Work →</button>
+                    <button onclick="openConsultationForm()" class="glass-card text-gray-800 px-6 md:px-8 py-3 md:py-4 rounded-xl font-bold hover:bg-white/60 transition uppercase text-[10px] md:text-xs">▷ Free Consultation</button>
                 </div>
-                <div class="grid grid-cols-3 gap-8 pt-10 border-t border-gray-100">
-                    <div><h4 class="text-3xl font-black outfit text-indigo-600">25+</h4><p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Projects Delivered</p></div>
-                    <div><h4 class="text-3xl font-black outfit text-indigo-600">95%</h4><p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Satisfaction</p></div>
-                    <div><h4 class="text-3xl font-black outfit text-indigo-600">24/7</h4><p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">Support</p></div>
+                <div class="grid grid-cols-3 gap-4 pt-8 border-t border-gray-100">
+                    <div><h4 class="text-xl md:text-3xl font-black outfit text-indigo-600">25+</h4><p class="text-gray-400 text-[8px] md:text-[10px] font-bold uppercase tracking-widest leading-tight">Projects Delivered</p></div>
+                    <div><h4 class="text-xl md:text-3xl font-black outfit text-indigo-600">95%</h4><p class="text-gray-400 text-[8px] md:text-[10px] font-bold uppercase tracking-widest leading-tight">Satisfaction</p></div>
+                    <div><h4 class="text-xl md:text-3xl font-black outfit text-indigo-600">24/7</h4><p class="text-gray-400 text-[8px] md:text-[10px] font-bold uppercase tracking-widest leading-tight">Support</p></div>
                 </div>
             </div>
-            <div class="lg:w-1/2 flex justify-center items-center">
-                <div class="image-container">
+            <div class="lg:w-1/2 flex justify-center items-center mt-6 lg:mt-0 mb-8 lg:mb-0">
+                <div class="image-container scale-90 md:scale-100">
                     <img src="2.jpg" class="main-img shadow-2xl" alt="Workspace">
                     <img src="3.jpg" class="sub-img-left shadow-2xl" alt="Mobile App">
                     <img src="1.jpg" class="sub-img-right shadow-2xl" alt="Dashboard">
@@ -111,85 +123,82 @@
         </div>
     </header>
 
-    <section id="work" class="py-24 px-6">
+    <section id="work" class="py-10 md:py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-24 px-4">
-                <span class="bg-[#F0F0FF] text-[#4F46E5] px-4 py-1 rounded-full text-xs font-bold mb-4 inline-block uppercase tracking-widest italic">Our Work</span>
-                <h2 class="text-6xl md:text-8xl font-black outfit uppercase leading-tight pb-4">Projects That <br><span class="text-gradient italic">Deliver Results</span></h2>
+            <div class="text-center mb-12 md:mb-24 px-4">
+                <span class="bg-[#F0F0FF] text-[#4F46E5] px-4 py-1 rounded-full text-[10px] font-bold mb-4 inline-block uppercase tracking-widest italic">Our Work</span>
+                <h2 class="text-4xl md:text-8xl font-black outfit uppercase leading-tight pb-4">Projects That <br><span class="text-gradient italic">Deliver Results</span></h2>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-16">
-                <div class="glass-card p-8 rounded-[40px] group">
-                    <div class="project-img-wrapper mb-8 border border-gray-100">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-16">
+                <div class="glass-card p-6 md:p-8 rounded-[30px] md:rounded-[40px] group">
+                    <div class="project-img-wrapper mb-6 md:mb-8 border border-gray-100">
                         <img src="Steel_suvidha.jpeg" class="group-hover:scale-105" alt="Steel Suvidha Logo">
                     </div>
                     <div class="flex gap-2 mb-4">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-widest italic">E-Commerce</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-black uppercase tracking-widest italic">E-Commerce</span>
                     </div>
-                    <h3 class="text-3xl font-black outfit mb-3 uppercase">Steel_Suvidha App</h3>
-                    <p class="text-gray-500 text-sm mb-6">Marketplace featuring a robust **Three-Panel Architecture**: Buyer, Seller, and Admin Panel.</p>
-                    <button onclick="window.location.href='steel-suvidha-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-xs tracking-widest">View Case Study</button>
+                    <h3 class="text-2xl md:text-3xl font-black outfit mb-3 uppercase">Steel_Suvidha App</h3>
+                    <p class="text-gray-500 text-xs md:text-sm mb-6">Marketplace featuring a robust Three-Panel Architecture: Buyer, Seller, and Admin Panel.</p>
+                    <button onclick="window.location.href='steel-suvidha-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-[10px] tracking-widest">View Case Study</button>
                 </div>
 
-                <div class="glass-card p-8 rounded-[40px] group">
-                    <div class="project-img-wrapper mb-8 border border-gray-100 bg-blue-50">
-                        <svg class="w-32 h-32 text-indigo-600 group-hover:scale-110 transition duration-500" fill="currentColor" viewBox="0 0 20 20">
+                <div class="glass-card p-6 md:p-8 rounded-[30px] md:rounded-[40px] group">
+                    <div class="project-img-wrapper mb-6 md:mb-8 border border-gray-100 bg-blue-50">
+                        <svg class="w-20 md:w-32 h-20 md:h-32 text-indigo-600 group-hover:scale-110 transition duration-500" fill="currentColor" viewBox="0 0 20 20">
                             <path fill-rule="evenodd" d="M10 1.944A11.94 11.94 0 012.183 5c.13 6.695 3.035 12.483 7.817 15 4.782-2.517 7.687-8.305 7.817-15A11.94 11.94 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
                     <div class="flex gap-2 mb-4">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-widest italic">Security</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-black uppercase tracking-widest italic">Security</span>
                     </div>
-                    <h3 class="text-3xl font-black outfit mb-3 uppercase">Campus Guardian</h3>
-                    <p class="text-gray-500 text-sm mb-6">Real-time school security ecosystem for tracking and student safety.</p>
-                    <button onclick="window.location.href='campus-guardian-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-xs tracking-widest">View Case Study</button>
+                    <h3 class="text-2xl md:text-3xl font-black outfit mb-3 uppercase">Campus Guardian</h3>
+                    <p class="text-gray-500 text-xs md:text-sm mb-6">Real-time school security ecosystem for tracking and student safety.</p>
+                    <button onclick="window.location.href='campus-guardian-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-[10px] tracking-widest">View Case Study</button>
                 </div>
 
-                <div class="glass-card p-8 rounded-[40px] group">
-                    <div class="project-img-wrapper mb-8 border border-gray-100">
+                <div class="glass-card p-6 md:p-8 rounded-[30px] md:rounded-[40px] group">
+                    <div class="project-img-wrapper mb-6 md:mb-8 border border-gray-100">
                         <img src="Calcutta.png" class="group-hover:scale-105" alt="Calcutta D Rasoi Logo">
                     </div>
                     <div class="flex gap-2 mb-4">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-widest italic">Restaurant</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-black uppercase tracking-widest italic">Restaurant</span>
                     </div>
-                    <h3 class="text-3xl font-black outfit mb-3 uppercase">Calcutta-D-Rasoi</h3>
-                    <p class="text-gray-500 text-sm mb-6">Modern restaurant website with online ordering and reservations.</p>
-                    <button onclick="window.location.href='calcutta-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-xs tracking-widest">View Case Study</button>
+                    <h3 class="text-2xl md:text-3xl font-black outfit mb-3 uppercase">Calcutta-D-Rasoi</h3>
+                    <p class="text-gray-500 text-xs md:text-sm mb-6">Modern restaurant website with online ordering and reservations.</p>
+                    <button onclick="window.location.href='calcutta-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-[10px] tracking-widest">View Case Study</button>
                 </div>
 
-                <div class="glass-card p-8 rounded-[40px] group">
-                    <div class="project-img-wrapper mb-8 border border-gray-100">
+                <div class="glass-card p-6 md:p-8 rounded-[30px] md:rounded-[40px] group">
+                    <div class="project-img-wrapper mb-6 md:mb-8 border border-gray-100">
                         <img src="Gymnastic.jpeg" class="group-hover:scale-105" alt="Gymnastics Fit Planet Logo">
                     </div>
                     <div class="flex gap-2 mb-4">
-                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[10px] font-black uppercase tracking-widest italic">Fitness</span>
+                        <span class="px-3 py-1 bg-indigo-50 text-indigo-600 rounded-full text-[9px] font-black uppercase tracking-widest italic">Fitness</span>
                     </div>
-                    <h3 class="text-3xl font-black outfit mb-3 uppercase">Gymnastics Fit Planet</h3>
-                    <p class="text-gray-500 text-sm mb-6">Fitness gym website with booking system and member portal.</p>
-                    <button onclick="window.location.href='gym-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-xs tracking-widest">View Case Study</button>
+                    <h3 class="text-2xl md:text-3xl font-black outfit mb-3 uppercase">Gymnastics Fit Planet</h3>
+                    <p class="text-gray-500 text-xs md:text-sm mb-6">Fitness gym website with booking system and member portal.</p>
+                    <button onclick="window.location.href='gym-case.html'" class="text-indigo-600 font-bold border-b-2 border-indigo-600 uppercase text-[10px] tracking-widest">View Case Study</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="relative py-24 px-6 mx-6 mb-12 overflow-hidden rounded-[60px] shadow-2xl border border-white/40">
+    <section class="relative py-16 md:py-24 px-6 mx-4 md:mx-6 mb-12 overflow-hidden rounded-[40px] md:rounded-[60px] shadow-2xl border border-white/40">
         <div class="absolute inset-0 bg-gradient-to-br from-[#4F46E5] to-[#9333EA] opacity-90 z-0"></div>
         <div class="absolute inset-0 backdrop-blur-xl z-10"></div>
-        
         <div class="relative max-w-4xl mx-auto text-center text-white z-20">
-            <span class="bg-white/20 px-4 py-2 rounded-full text-xs font-bold mb-8 inline-block uppercase tracking-widest italic">✨ Free Consultation Available</span>
-            <h2 class="text-4xl md:text-6xl font-black outfit mb-8 leading-tight">Ready to Digitally Scale Your Business?</h2>
-            <p class="text-indigo-100 text-lg mb-12">Let's discuss how we can transform your business with a custom digital strategy.</p>
-            
-            <div class="flex flex-wrap justify-center gap-6 mb-20">
-                <button onclick="openConsultationForm()" class="bg-white text-indigo-600 px-10 py-5 rounded-2xl font-black hover:shadow-2xl transition uppercase text-xs tracking-widest">📅 Book Strategy Call</button>
-                <button onclick="window.location.href='index.html#pricing'" class="border border-white/40 backdrop-blur-md text-white px-10 py-5 rounded-2xl font-black hover:bg-white/10 transition uppercase text-xs tracking-widest">View Pricing</button>
+            <span class="bg-white/20 px-4 py-2 rounded-full text-[10px] font-bold mb-8 inline-block uppercase tracking-widest italic">✨ Free Consultation Available</span>
+            <h2 class="text-3xl md:text-6xl font-black outfit mb-8 leading-tight">Ready to Digitally Scale Your Business?</h2>
+            <p class="text-indigo-100 text-sm md:text-lg mb-12">Let's discuss how we can transform your business with a custom digital strategy.</p>
+            <div class="flex flex-wrap justify-center gap-4 md:gap-6 mb-16">
+                <button onclick="openConsultationForm()" class="bg-white text-indigo-600 px-8 md:px-10 py-4 md:py-5 rounded-2xl font-black hover:shadow-2xl transition uppercase text-[10px] md:text-xs tracking-widest">📅 Book Strategy Call</button>
+                <button onclick="window.location.href='index.html#pricing'" class="border border-white/40 backdrop-blur-md text-white px-8 md:px-10 py-4 md:py-5 rounded-2xl font-black hover:bg-white/10 transition uppercase text-[10px] md:text-xs tracking-widest">View Pricing</button>
             </div>
-            
-            <div class="flex flex-wrap justify-center gap-12 border-t border-white/20 pt-12">
-                <div><h4 class="text-4xl font-black outfit">25+</h4><p class="text-indigo-200 text-[10px] font-bold uppercase tracking-widest">Happy Clients</p></div>
-                <div><h4 class="text-4xl font-black outfit">4.9/5</h4><p class="text-indigo-200 text-[10px] font-bold uppercase tracking-widest">Client Rating</p></div>
-                <div><h4 class="text-4xl font-black outfit">15 Days</h4><p class="text-indigo-200 text-[10px] font-bold uppercase tracking-widest">Avg. Delivery</p></div>
+            <div class="flex flex-wrap justify-center gap-8 md:gap-12 border-t border-white/20 pt-12">
+                <div><h4 class="text-2xl md:text-4xl font-black outfit">25+</h4><p class="text-indigo-200 text-[8px] md:text-[10px] font-bold uppercase tracking-widest">Happy Clients</p></div>
+                <div><h4 class="text-2xl md:text-4xl font-black outfit">4.9/5</h4><p class="text-indigo-200 text-[8px] md:text-[10px] font-bold uppercase tracking-widest">Client Rating</p></div>
+                <div><h4 class="text-2xl md:text-4xl font-black outfit">15 Days</h4><p class="text-indigo-200 text-[8px] md:text-[10px] font-bold uppercase tracking-widest">Avg. Delivery</p></div>
             </div>
         </div>
     </section>
@@ -197,6 +206,16 @@
     <script>
         function openConsultationForm() { window.location.href = 'index.html#contact'; }
         function requestAudit() { alert("Initiating Node_Audit..."); window.location.href = 'index.html#contact'; }
+
+        window.addEventListener('scroll', () => {
+            const scrollValue = document.getElementById('scroll-value');
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = Math.round((winScroll / height) * 100);
+            if (scrollValue) {
+                scrollValue.innerText = Math.min(Math.max(scrolled, 0), 100);
+            }
+        });
     </script>
 </body>
 </html>
