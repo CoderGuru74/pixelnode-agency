@@ -1,6 +1,6 @@
 /**
  * PixelNode Agency - Master Script
- * Updated: Mobile-Optimized Scroll Indicator + Wave Grid + EmailJS
+ * Updated: Mobile-Optimized Scroll Indicator + Wave Grid + EmailJS + Modal Fix
  */
 
 window.onload = function() {
@@ -118,14 +118,16 @@ window.onload = function() {
         }
     });
 
-    // --- 4. SCROLL & MODAL LOGIC ---
+    // --- 4. SCROLL & MODAL LOGIC (FIXED) ---
     const openBtns = document.querySelectorAll('.open-form');
     const modal = document.getElementById('contact-modal');
+    const closeModalBtn = document.getElementById('close-modal');
     
     openBtns.forEach(btn => {
         btn.onclick = (e) => {
             e.preventDefault();
             if(modal) {
+                // Ensure correct classes are toggled
                 modal.classList.remove('opacity-0', 'pointer-events-none');
                 modal.classList.add('opacity-100', 'pointer-events-auto');
                 document.body.style.overflow = 'hidden';
@@ -133,11 +135,24 @@ window.onload = function() {
         }
     });
 
-    const closeModalBtn = document.getElementById('close-modal');
     if (closeModalBtn) {
         closeModalBtn.onclick = () => {
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.style.overflow = 'auto';
+            if(modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'auto';
+            }
+        };
+    }
+
+    // Close on clicking outside the modal content
+    if (modal) {
+        modal.onclick = (e) => {
+            if (e.target === modal) {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.classList.remove('opacity-100', 'pointer-events-auto');
+                document.body.style.overflow = 'auto';
+            }
         };
     }
 
@@ -154,8 +169,10 @@ window.onload = function() {
                     btn.innerText = "SUCCESS!";
                     setTimeout(() => {
                         modal.classList.add('opacity-0', 'pointer-events-none');
+                        modal.classList.remove('opacity-100', 'pointer-events-auto');
                         document.body.style.overflow = 'auto';
                         btn.innerText = "Initiate Handshake";
+                        this.reset(); // Reset form after success
                     }, 2000);
                 });
         });

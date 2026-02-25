@@ -47,6 +47,12 @@
             color: #A855F7; /* Purple-500 */
             font-size: 1.8rem;
         }
+
+        /* Modal Visibility Class */
+        .modal-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
     </style>
 </head>
 <body class="bg-[#020202] text-white index-page scroll-smooth">
@@ -245,7 +251,7 @@
 
     <div id="contact-modal" class="fixed inset-0 z-[100] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-500 backdrop-blur-xl bg-black/60">
         <div class="relative w-full max-w-lg p-8 md:p-12 rounded-[40px] bg-[#0A0A0A] border border-white/10 shadow-2xl">
-            <button id="close-modal" class="absolute top-6 right-8 text-gray-500 hover:text-white transition">
+            <button id="close-modal" class="absolute top-6 right-8 text-gray-500 hover:text-white transition z-[110]">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                 </svg>
@@ -259,6 +265,11 @@
                     <option value="AI Agents">AI AGENTS</option>
                     <option value="Web Architecture">WEB SYSTEMS</option>
                     <option value="Design Ops">BRANDING</option>
+                    <option value="Get Free Audit">Get Free Audit</option>
+                    <option value="Get Free Consultation">Get Free Consultation</option>
+                    <option value="Branding & Media">Branding & Media</option>
+                    <option value="UI/UX Design">UI/UX Design</option>
+                    <option value="Mobile Apps">Mobile Apps</option>
                 </select>
                 <textarea name="message" rows="4" placeholder="PROJECT BRIEF" required class="bg-white/5 border border-white/10 px-6 py-4 rounded-2xl focus:outline-none focus:border-purple-500 transition text-sm resize-none"></textarea>
                 <button id="button" type="submit" class="bg-purple-600 text-white font-black py-5 rounded-2xl hover:bg-white hover:text-black transition-all uppercase tracking-widest mt-2">
@@ -274,6 +285,29 @@
 
     <script src="script.js"></script>
     <script>
+        // Node Modal Toggle Logic
+        const modal = document.getElementById('contact-modal');
+        const openBtns = document.querySelectorAll('.open-form');
+        const closeBtn = document.getElementById('close-modal');
+
+        openBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modal.classList.add('modal-active');
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.classList.remove('modal-active');
+        });
+
+        // Close on clicking outside the modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('modal-active');
+            }
+        });
+
+        // Scroll Percentage logic
         window.addEventListener('scroll', () => {
             const scrollValue = document.getElementById('scroll-value');
             const scrollTop = window.scrollY;
