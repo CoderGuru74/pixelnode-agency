@@ -12,6 +12,42 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* INFINITE BRAND MARQUEE ANIMATION */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 20;
+        }
+        .marquee-content {
+            display: inline-block;
+            animation: scroll 30s linear infinite;
+        }
+        .marquee-item {
+            display: inline-block;
+            padding: 0 60px;
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+        }
+        .marquee-dot {
+            color: #A855F7; /* Purple-500 */
+            font-size: 1.8rem;
+        }
+    </style>
 </head>
 <body class="bg-[#020202] text-white index-page scroll-smooth">
 
@@ -175,6 +211,27 @@
         </div>
     </section>
 
+    <section class="marquee-container">
+        <div class="marquee-content">
+            <span class="marquee-item">AROMA</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item text-purple-500">Calcutta-D-Rasoi</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item">Steel_Suvidha</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item text-purple-500">Gymnastics Fit Planet</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item">AROMA</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item text-purple-500">Calcutta-D-Rasoi</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item">Steel_Suvidha</span>
+            <span class="marquee-dot">●</span>
+            <span class="marquee-item text-purple-500">Gymnastics Fit Planet</span>
+            <span class="marquee-dot">●</span>
+        </div>
+    </section>
+
     <section id="contact" class="relative z-10 py-32 px-8 md:px-20 mb-20">
         <div class="bg-white/5 border border-white/10 p-12 md:p-20 rounded-[50px] text-center max-w-6xl mx-auto backdrop-blur-md">
             <h2 class="text-4xl md:text-7xl font-black outfit-font mb-8 uppercase">Ready to <span class="text-purple-500">Deploy?</span></h2>
@@ -216,5 +273,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollValue = document.getElementById('scroll-value');
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = Math.round((scrollTop / (docHeight - winHeight)) * 100);
+            if (scrollValue) {
+                scrollValue.innerText = Math.min(Math.max(scrollPercent, 0), 100);
+            }
+        });
+    </script>
 </body>
 </html>
